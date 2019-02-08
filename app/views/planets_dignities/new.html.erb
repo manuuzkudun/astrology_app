@@ -1,0 +1,34 @@
+<h1>Calculate planet dignities</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= form_tag("/planets_dignities/", :method => "get") do %>
+      <div class="form-group">
+        <%= label_tag(:latitude, "Latitude") %>
+        <%= text_field_tag(:latitude) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:longitude, "Longitude") %>
+        <%= text_field_tag(:longitude) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:year, "Year") %>
+        <%= text_field_tag(:year) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:month, "Month") %>
+        <%= text_field_tag(:month) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:day, "Day") %>
+        <%= text_field_tag(:day) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag(:hour, "Hour") %>
+        <%= text_field_tag(:hour) %>
+      </div>
+      <%= submit_tag("Submit") %>
+    <% end %>
+    </di>
+  </div>
+</div>

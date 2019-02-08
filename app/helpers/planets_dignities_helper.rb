@@ -1,0 +1,2 @@
+module PlanetsDignitiesHelper
+end
