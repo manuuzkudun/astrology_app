@@ -5,6 +5,8 @@
     <p>Planet: <%= planet[:planet_name].capitalize %></p>
     <p>Current sign: <%= planet[:current_sign].to_s.capitalize %></p>
     <p>Sign degree: <%= planet[:sign_degree].round(2) %></p>
+    <p>Speed: <%= planet[:speed].round(4) %></p>
+    <p>House: <%= planet[:house] %></p>
     <p>Dignities:</p>
     <ul>
     <% planet[:dignities].each do |dignity, data| %>

@@ -1,18 +1,27 @@
 module Planets
   class Planet
-    attr_reader :current_sign, :sign_degree, :decanate, :latitude, :name
+    attr_reader :current_sign, :sign_degree, :decanate, :longitude, :name, :house, :speed
 
     def initialize(params)
       @name = params[:planet_name]
       @current_sign = ZodiacSigns::ZodiacSignFactory.create(params[:current_sign])
+      @house = params[:house]
       @sign_degree = params[:sign_degree]
-      @latitude = params[:latitude]
+      @longitude = params[:longitude]
+      @speed = params[:speed]
       @decanate = get_decanate(@current_sign, @sign_degree)
       @term = get_term(@current_sign, @sign_degree)
     end
 
     def to_s
       @name
+    end
+
+    (1..12).to_a.each do |i|
+      method = "in_house_#{i}?".to_sym
+      define_method method do
+        @house == i
+      end
     end
 
     def in_domicile?

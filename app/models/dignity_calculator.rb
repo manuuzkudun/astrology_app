@@ -31,7 +31,59 @@ class DignityCalculator
     "domicile_reception": {
       method: :in_reception_of_domiciles?,
       score: 5
-    }
+    },
+    "in_house_1": {
+      method: :in_house_1?,
+      score: 5
+    },
+    "in_house_2": {
+      method: :in_house_2?,
+      score: 3
+    },
+    "in_house_3": {
+      method: :in_house_3?,
+      score: 1
+    },
+    "in_house_4": {
+      method: :in_house_4?,
+      score: 4
+    },
+    "in_house_5": {
+      method: :in_house_5?,
+      score: 3
+    },
+    "in_house_6": {
+      method: :in_house_6?,
+      score: -5
+    },
+    "in_house_7": {
+      method: :in_house_7?,
+      score: 4
+    },
+    "in_house_8": {
+      method: :in_house_8?,
+      score: -5
+    },
+    "in_house_9": {
+      method: :in_house_9?,
+      score: 2
+    },
+    "in_house_10": {
+      method: :in_house_10?,
+      score: 5
+    },
+    "in_house_11": {
+      method: :in_house_11?,
+      score: 4
+    },
+    "in_house_12": {
+      method: :in_house_12?,
+      score: -4
+    },
+    "in_joy": {
+      method: :in_joy?,
+      score: 2
+    },
   }.freeze
 
   def initialize(planets, options=nil)

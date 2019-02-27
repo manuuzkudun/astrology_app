@@ -19,6 +19,8 @@ class PlanetsDignitiesController < ApplicationController
       {
         "planet_name": planet.name,
         "current_sign": planet.current_sign,
+        "speed": planet.speed,
+        "house": planet.house,
         "sign_degree": planet.sign_degree,
         "dignities":dignity_calculator.calculate_for(planet)
       }
