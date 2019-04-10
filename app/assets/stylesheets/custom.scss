@@ -1,2 +1,73 @@
 @import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap";
+
+$scored: green; //positive dignity
+$unscored: red; //negative dignity
+
+/* ==================================================
+STYLES FOR NEW VIEW (ROOT)
+================================================== */
+
+div.primary {
+  input.submit-btn.disabled {
+    pointer-events: none;
+  }
+}
+
+/* ==================================================
+STYLES FOR PLANET DIGNITIES
+================================================== */
+
+div.container {
+  // max-width:none;
+  // width:95%;
+  h2 {
+    small {
+      color:gray;
+      text-transform: capitalize;
+      letter-spacing: 0;
+      font-size:1rem;
+    }
+  }
+  h6 {
+    color:gray;
+    padding:0;
+    margin:1rem 0;
+  }
+  select {
+    margin:0 0 .5rem 0 !important;
+    outline:none;
+    min-height:3rem;
+    font-family:inherit;
+  }
+  input.btn {
+    margin:.5rem 0 0 0;
+  }
+  label:last-of-type {
+    margin:1.5rem 0 0 0;
+  }
+
+  table {
+    td.scored {
+      color:$scored;
+    }
+    td.unscored {
+      color:$unscored;
+    }
+    td {
+      span.scored {
+        color:$scored;
+      }
+      span.unscored {
+        color:$unscored;
+      }
+    }
+  }
+  div.re-submit-holder {
+    text-align:right;
+    a {
+      margin:1rem 0;
+    }
+  }
+
+}

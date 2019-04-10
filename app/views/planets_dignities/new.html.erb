@@ -1,34 +1,41 @@
-<h1>Calculate planet dignities <%=@var %></h1>
+<div class="container mt-5">
+<h2>Astrology API <small>Planetary Quantification Online Tool</small></h2>
+<hr></hr>
+<h6>Please enter your Natal Information</h6>
+<hr></hr>
+<div class="formgroup primary">
 
-<div class="row">
-  <div class="col-md-6">
     <%= form_tag("/planets_dignities/", :method => "get") do %>
-      <div class="form-group">
-        <%= label_tag(:latitude, "Latitude") %>
-        <%= text_field_tag(:latitude) %>
+      <div class="formgroup">
+        <input id="latitude" name="latitude" type="text" class="form-control mb-2" placeholder="Latitude (i.e: 41.390205)">
       </div>
-      <div class="form-group">
-        <%= label_tag(:longitude, "Longitude") %>
-        <%= text_field_tag(:longitude) %>
+      <div class="formgroup">
+        <input id="longitude" name="longitude" type="text" class="form-control mb-2" placeholder="Longitude (i.e: 2.154007)">
       </div>
-      <div class="form-group">
-        <%= label_tag(:year, "Year") %>
-        <%= text_field_tag(:year) %>
+      <div class="formgroup">
+        <input id="year" name="year" type="text" class="form-control mb-2" placeholder="Year (i.e: 2002)">
       </div>
-      <div class="form-group">
-        <%= label_tag(:month, "Month") %>
-        <%= text_field_tag(:month) %>
+      <div class="formgroup">
+        <input id="month" name="month" type="text" class="form-control mb-2" placeholder="Month (i.e: 3 for March)">
       </div>
-      <div class="form-group">
-        <%= label_tag(:day, "Day") %>
-        <%= text_field_tag(:day) %>
+      <div class="formgroup">
+        <input id="day" name="day" type="text" class="form-control mb-2" placeholder="Day (i.e: 23)">
       </div>
-      <div class="form-group">
-        <%= label_tag(:hour, "Hour") %>
-        <%= text_field_tag(:hour) %>
+      <div class="formgroup">
+        <input id="hour" name="hour" type="text" class="form-control mb-2" placeholder="Hour (i.e: 04:24 or 15:30)">
       </div>
-      <%= submit_tag("Submit") %>
+      <input id="btn-submit" type="submit" name="commit" data-disable-with="Submit" value="Get Results" class="btn btn-primary submit-btn">
     <% end %>
-    </di>
+
+  </div><!---->
+  <!--<form class="formgroup" action="/planets_dignities/" accept-charset="UTF-8" method="get">
+    <input name="utf8" type="hidden" value="✓">
+    <input id="latitude" name="latitude" type="text" class="form-control mb-2" placeholder="Latitude (i.e: 41.390205)">
+    <input id="longitude" name="longitude" type="text" class="form-control mb-2" placeholder="Longitude (i.e: 2.154007)">
+    <input id="year" name="year" type="text" class="form-control mb-2" placeholder="Year (i.e: 2003)">
+    <input id="month" name="month" type="text" class="form-control mb-2" placeholder="Month (i.e: 3 for March)">
+    <input id="day" name="day" type="text" class="form-control mb-2" placeholder="Day (i.e: 23)">
+    <input id="hour" name="hour" type="text" class="form-control mb-2" placeholder="Hour (i.e: 04:24 or 15:30)">
+  </form>
+  <input id="btn-submit" type="submit" name="commit" data-disable-with="Get Results" value="Get Results" class="btn btn-primary">-->
   </div>
-</div>

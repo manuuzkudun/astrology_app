@@ -1,23 +1,131 @@
-<h1>Planet dignities</h1>
-<div>
-  <% @planets_dignities.each do |planet| %>
-  <div style="margin: 40px 0">
-    <p>Planet: <%= planet[:planet_name].capitalize %></p>
-    <p>Current sign: <%= planet[:current_sign].to_s.capitalize %></p>
-    <p>Sign degree: <%= planet[:sign_degree].round(2) %></p>
-    <p>Speed: <%= planet[:speed].round(4) %></p>
-    <p>House: <%= planet[:house] %></p>
-    <p>Dignities:</p>
-    <ul>
-    <% planet[:dignities].each do |dignity, data| %>
-      <% if data.class == Hash && data[:result] %>
-        <li><%= dignity.capitalize %>: <%= data[:score] %></li>
-      <% end %>
-    <% end %>
-    </ul>
-    <p>Total dignity: <%= planet[:dignities]["total_score"] %></p>
-      </div>
-  <% end %>
-</div>
+<% romanHouses = {
+  "1" => "I",
+  "2" => "II",
+  "3" => "III",
+  "4" => "IV",
+  "5" => "V",
+  "6" => "VI",
+  "7" => "VII",
+  "8" => "VIII",
+  "9" => "IX",
+  "10" => "X",
+  "11" => "XI",
+  "12" => "XII"
+}%>
+<div class="container mt-5 mb-5">
+  <h2>Astrology API <small>Planetary Quantification Online Tool</small></h2>
+  <hr></hr>
+  <h6>Results</h6>
+  <table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>planet</th>
+      <th>sign</th>
+      <th>house</th>
+      <th>degree</th>
+      <th>domicile</th>
+      <th>D.recep</th>
+      <th>exaltation</th>
+      <th>E.recep</th>
+      <th>detriment</th>
+      <th>fall</th>
+      <th>decanate</th>
+      <th>term</th>
+      <th>Joy</th>
+      <th>score</th>
+    </tr>
+    </thead>
+  <tbody>
 
-<%= link_to "Home", "/" %>
+  <% @planets_dignities.each do |planet| %>
+  <!--<%= planet[:dignities]  %>-->
+      <tr>
+        <td class="planet"><%= planet[:planet_name].capitalize %></td>
+        <td class="sign"><%= planet[:current_sign].to_s.capitalize %></td>
+        <% (1..12).each do |house| %>
+        <% if planet[:dignities][:"in_house_#{house}"][:result] %>
+          <% if planet[:dignities][:"in_house_#{house}"][:score] > 0 %>
+            <td class="in-house"><%= romanHouses["#{house}"] %><span class="scored">&nbsp;(+<%= planet[:dignities][:"in_house_#{house}"][:score]%>)</span></td>
+          <% else %>
+            <td class="in-house"><%= romanHouses["#{house}"] %><span class="unscored">&nbsp;(<%= planet[:dignities][:"in_house_#{house}"][:score]%>)</span></td>
+          <% end %>
+        <% end %>
+        <% end %>
+        <td class="degree"><%= planet[:sign_degree].round(2) %></td>
+        <% if planet[:dignities][:domicile][:result]  %>
+          <td class="domicile scored">+<%= planet[:dignities][:domicile][:score] %></td>
+        <% else %>
+          <td class="domicile"><%= planet[:dignities][:domicile][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:domicile_reception][:result]  %>
+          <td class="domicile-recep scored">+<%= planet[:dignities][:domicile_reception][:score] %></td>
+        <% else %>
+          <td class="domicile-recep"><%= planet[:dignities][:domicile_reception][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:exaltation][:result]  %>
+          <td class="exaltation scored">+<%= planet[:dignities][:exaltation][:score] %></td>
+        <% else %>
+          <td class="exaltation"><%= planet[:dignities][:exaltation][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:exaltation_reception][:result]  %>
+          <td class="exaltation-rep scored">+<%= planet[:dignities][:exaltation_reception][:score] %></td>
+        <% else %>
+          <td class="exaltation-rep"><%= planet[:dignities][:exaltation_reception][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:detriment][:result]  %>
+          <td class="detriment unscored"><%= planet[:dignities][:detriment][:score] %></td>
+        <% else %>
+          <td class="detriment"><%= planet[:dignities][:detriment][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:fall][:result]  %>
+          <td class="fall unscored"><%= planet[:dignities][:fall][:score] %></td>
+        <% else %>
+          <td class="fall"><%= planet[:dignities][:fall][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:decanate][:result]  %>
+          <td class="decanate scored">+<%= planet[:dignities][:decanate][:score] %></td>
+        <% else %>
+          <td class="decanate"><%= planet[:dignities][:decanate][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:term][:result]  %>
+          <td class="term scored">+<%= planet[:dignities][:term][:score] %></td>
+        <% else %>
+          <td class="term"><%= planet[:dignities][:term][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:in_joy][:result]  %>
+          <td class="term scored">+<%= planet[:dignities][:in_joy][:score] %></td>
+        <% else %>
+          <td class="term"><%= planet[:dignities][:in_joy][:score] %></td>
+        <% end %>
+        <% if planet[:dignities]["total_score"] > 0  %>
+          <td class="score scored"><%= planet[:dignities]["total_score"] %></td>
+        <% else %>
+          <td class="score unscored"><%= planet[:dignities]["total_score"] %></td>
+        <% end %>
+
+
+
+      <!-- <p>Planet: <%= planet[:planet_name].capitalize %></p>
+      <p>Current sign: <%= planet[:current_sign].to_s.capitalize %></p>
+      <p>Sign degree: <%= planet[:sign_degree].round(2) %></p>
+      <p>Speed: <%= planet[:speed].round(4) %></p>
+      <p>House: <%= planet[:house] %></p>
+      <p>Dignities:</p>
+      <ul>
+      <% planet[:dignities].each do |dignity, data| %>
+        <% if data.class == Hash && data[:result] %>
+          <li><%= dignity.capitalize %>: <%= data[:score] %></li>
+        <% end %>
+      <% end %>
+      </ul>
+      <p>Total dignity: <%= planet[:dignities]["total_score"] %></p> -->
+      </tr>
+    <% end %>
+  </tbody>
+  <table>
+
+<!--<%= link_to "Home", "/" %>-->
+  <div class="re-submit-holder">
+    <a class="btn btn-primary" href="/" role="button">Enter New Data</a>
+  </div>
+</div>
