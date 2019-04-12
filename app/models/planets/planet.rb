@@ -36,6 +36,10 @@ module Planets
       @detriments.any? { |d| d == @current_sign }
     end
 
+    def in_pilgrim_sign?
+      @pilgrim_signs.any? { |s| s == @current_sign }
+    end
+
     def in_fall?
       @fall == @current_sign
     end
@@ -70,20 +74,12 @@ module Planets
       result
     end
 
-    def get_domiciles(domicile_list)
-      domicile_list.map { |sign_name| ::ZodiacSigns::ZodiacSignFactory.create(sign_name) }
+    def get_signs(sign_list)
+      sign_list.map { |sign_name| ::ZodiacSigns::ZodiacSignFactory.create(sign_name) }
     end
 
-    def get_exaltation(exaltation_sign)
-      ZodiacSigns::ZodiacSignFactory.create(exaltation_sign)
-    end
-
-    def get_detriments(detriment_list)
-      detriment_list.map { |sign_name| ZodiacSigns::ZodiacSignFactory.create(sign_name) }
-    end
-
-    def get_fall(fall_sign)
-      ZodiacSigns::ZodiacSignFactory.create(fall_sign)
+    def get_sign(sign_name)
+      ZodiacSigns::ZodiacSignFactory.create(sign_name)
     end
 
     def get_decanate(zodiac_sign, degree)
