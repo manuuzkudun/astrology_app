@@ -3,6 +3,7 @@ module Planets
     DOMICILES = %w(gemini virgo).freeze
     EXALTATION = 'virgo'.freeze
     DETRIMENTS = %w(sagittarius pisces).freeze
+    PILGRIM_SIGNS = %w(aries cancer leo scorpio).freeze
     FALL = 'pisces'.freeze
     JOY = 1
     AVRG_SPEED = 0.5
@@ -11,10 +12,11 @@ module Planets
 
     def initialize(params)
       super(params)
-      @domiciles = get_domiciles(DOMICILES)
-      @exaltation = get_exaltation(EXALTATION)
-      @detriments = get_detriments(DETRIMENTS)
-      @fall = get_fall(FALL)
+      @domiciles = get_signs(DOMICILES)
+      @exaltation = get_sign(EXALTATION)
+      @detriments = get_signs(DETRIMENTS)
+      @fall = get_sign(FALL)
+      @pilgrim_signs = get_signs(PILGRIM_SIGNS)
     end
 
     def in_joy?

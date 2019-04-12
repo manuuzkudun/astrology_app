@@ -20,6 +20,10 @@ class DignityCalculator
       method: :in_fall?,
       score: -4
     },
+    "pilgrim": {
+      method: :in_pilgrim_sign?,
+      score: -2
+    },
     "decanate": {
       method: :in_decanate?,
       score: 1
