@@ -24,6 +24,10 @@ class DignityCalculator
       method: :in_pilgrim_sign?,
       score: -2
     },
+    "dispositor": {
+      method: :disposition,
+      score: 1
+    },
     "decanate": {
       method: :in_decanate?,
       score: 1
@@ -95,16 +99,22 @@ class DignityCalculator
     @planets = planets
   end
 
+  # TO-DO: Refractor
   def calculate_for(planet)
     results = {}
     total_score = 0
     DIGNITY_SCORES.each do |dignity, dignity_data|
       score = dignity_data[:score]
-      if dignity == :domicile_reception || dignity == :exaltation_reception
+      if dignity == :dispositor
+        planet_count = planet.send(dignity_data[:method], @planets)
+        dignified = planet_count > 0
+        score = score * planet_count
+      elsif dignity == :domicile_reception || dignity == :exaltation_reception
         dignified = planet.send(dignity_data[:method], @planets)
       else
         dignified = planet.send(dignity_data[:method])
       end
+      
       total_score += score if dignified
       results[dignity] = {
         result: dignified,

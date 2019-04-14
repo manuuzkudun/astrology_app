@@ -65,13 +65,21 @@ module Planets
 
     def in_reception_of_exaltation?(other_planets)
       result = false
-      other_planets.each do |pl|
-        next if pl == self
-        if pl.exaltation == self.current_sign && self.exaltation == pl.current_sign
+      other_planets.each do |planet|
+        next if planet == self
+        if planet.exaltation == self.current_sign && self.exaltation == planet.current_sign
           result = true
         end
       end
       result
+    end
+
+    def disposition(other_planets)
+      planet_count = 0
+      other_planets.each do |planet|
+        planet_count += 1 if planet.current_sign.ruler == self.to_s
+      end
+      planet_count
     end
 
     def get_signs(sign_list)
