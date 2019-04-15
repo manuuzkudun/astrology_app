@@ -33,6 +33,7 @@
       <th>decanate</th>
       <th>term</th>
       <th>Joy</th>
+      <th>Disposited planets</th>
       <th>score</th>
     </tr>
     </thead>
@@ -102,6 +103,11 @@
           <td class="term scored">+<%= planet[:dignities][:in_joy][:score] %></td>
         <% else %>
           <td class="term"><%= planet[:dignities][:in_joy][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:dispositor][:result]  %>
+          <td class="dispositor scored">+<%= planet[:dignities][:dispositor][:score] %></td>
+        <% else %>
+          <td class="dispositor"><%= planet[:dignities][:dispositor][:score] %></td>
         <% end %>
         <% if planet[:dignities]["total_score"] > 0  %>
           <td class="score scored"><%= planet[:dignities]["total_score"] %></td>
