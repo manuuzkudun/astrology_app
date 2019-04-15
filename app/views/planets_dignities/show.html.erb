@@ -29,6 +29,7 @@
       <th>E.recep</th>
       <th>detriment</th>
       <th>fall</th>
+      <th>pilgrim</th>
       <th>decanate</th>
       <th>term</th>
       <th>Joy</th>
@@ -82,6 +83,11 @@
         <% else %>
           <td class="fall"><%= planet[:dignities][:fall][:score] %></td>
         <% end %>
+        <% if planet[:dignities][:pilgrim][:result]  %>
+          <td class="pilgrim unscored"><%= planet[:dignities][:pilgrim][:score] %></td>
+        <% else %>
+          <td class="pilgrim"><%= planet[:dignities][:pilgrim][:score] %></td>
+        <% end %>
         <% if planet[:dignities][:decanate][:result]  %>
           <td class="decanate scored">+<%= planet[:dignities][:decanate][:score] %></td>
         <% else %>
@@ -100,7 +106,11 @@
         <% if planet[:dignities]["total_score"] > 0  %>
           <td class="score scored"><%= planet[:dignities]["total_score"] %></td>
         <% else %>
+          <% if planet[:dignities]["total_score"] == 0 %>
+          <td class="score"><%= planet[:dignities]["total_score"] %></td>
+          <% else %>
           <td class="score unscored"><%= planet[:dignities]["total_score"] %></td>
+          <% end %>
         <% end %>
 
 
