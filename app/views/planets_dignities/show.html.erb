@@ -34,6 +34,11 @@
       <th>term</th>
       <th>Joy</th>
       <th>Disposited planets</th>
+      <th>Direct</th>
+      <th>Retrograde</th>
+      <th>Fast</th>
+      <th>Slow</th>
+      <th>Stationary</th>
       <th>score</th>
     </tr>
     </thead>
@@ -108,6 +113,31 @@
           <td class="dispositor scored">+<%= planet[:dignities][:dispositor][:score] %></td>
         <% else %>
           <td class="dispositor"><%= planet[:dignities][:dispositor][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:direct][:result]  %>
+          <td class="direct scored">+<%= planet[:dignities][:direct][:score] %></td>
+        <% else %>
+          <td class="direct"><%= planet[:dignities][:direct][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:retrograde][:result]  %>
+          <td class="retrograde unscored"><%= planet[:dignities][:retrograde][:score] %></td>
+        <% else %>
+          <td class="retrograde"><%= planet[:dignities][:retrograde][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:fast][:result]  %>
+          <td class="fast scored">+<%= planet[:dignities][:fast][:score] %></td>
+        <% else %>
+          <td class="fast"><%= planet[:dignities][:fast][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:slow][:result]  %>
+          <td class="slow unscored"><%= planet[:dignities][:slow][:score] %></td>
+        <% else %>
+          <td class="slow"><%= planet[:dignities][:slow][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:stationary][:result]  %>
+          <td class="stationary unscored"><%= planet[:dignities][:stationary][:score] %></td>
+        <% else %>
+          <td class="stationary"><%= planet[:dignities][:stationary][:score] %></td>
         <% end %>
         <% if planet[:dignities]["total_score"] > 0  %>
           <td class="score scored"><%= planet[:dignities]["total_score"] %></td>
