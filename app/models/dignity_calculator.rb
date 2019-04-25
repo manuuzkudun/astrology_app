@@ -36,6 +36,26 @@ class DignityCalculator
       method: :in_term?,
       score: 2
     },
+    "direct": {
+      method: :direct?,
+      score: 4
+    },
+    "retrograde": {
+      method: :retrograde?,
+      score: -5
+    },
+    "fast": {
+      method: :fast?,
+      score: 2
+    },
+    "slow": {
+      method: :slow?,
+      score: -2
+    },
+    "stationary": {
+      method: :stationary?,
+      score: -1
+    },
     "domicile_reception": {
       method: :in_reception_of_domiciles?,
       score: 5
@@ -114,7 +134,7 @@ class DignityCalculator
       else
         dignified = planet.send(dignity_data[:method])
       end
-      
+
       total_score += score if dignified
       results[dignity] = {
         result: dignified,

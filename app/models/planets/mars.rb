@@ -6,7 +6,7 @@ module Planets
     PILGRIM_SIGNS = %w(gemini virgo aquarius).freeze
     FALL = 'cancer'.freeze
     JOY = 6
-    AVRG_SPEED = 0.5
+    AVRG_SPEED = 0.5242
 
     attr_reader :domiciles, :exaltation
 
@@ -17,14 +17,11 @@ module Planets
       @detriments = get_signs(DETRIMENTS)
       @fall = get_sign(FALL)
       @pilgrim_signs = get_signs(PILGRIM_SIGNS)
+      @avrg_speed = AVRG_SPEED
     end
 
     def in_joy?
       @house == JOY
-    end
-
-    def fast?
-      @speed > AVRG_SPEED
     end
   end
 end

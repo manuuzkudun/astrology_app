@@ -52,6 +52,30 @@ module Planets
       @term == @name
     end
 
+    def direct?
+      @speed > 0
+    end
+
+    def retrograde?
+      @speed < 0
+    end
+
+    def retrograde?
+      @speed < 0
+    end
+
+    def fast?
+      (@speed/@avrg_speed).abs > 1.1
+    end
+
+    def slow?
+      (@speed/@avrg_speed).abs < 0.9
+    end
+
+    def stationary?
+      (@speed/@avrg_speed).abs < 0.1
+    end
+
     def in_reception_of_domiciles?(other_planets)
       result = false
       other_planets.each do |pl|
