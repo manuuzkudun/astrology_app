@@ -60,10 +60,6 @@ module Planets
       @speed < 0
     end
 
-    def retrograde?
-      @speed < 0
-    end
-
     def fast?
       (@speed/@avrg_speed).abs > 1.1
     end

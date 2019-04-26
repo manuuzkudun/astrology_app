@@ -1,142 +1,36 @@
 class DignityCalculator
-  DIGNITY_SCORES= {
-    "exaltation_reception": {
-      method: :in_reception_of_exaltation?,
-      score: 4
-    },
-    "domicile": {
-      method: :in_domicile?,
-      score: 5
-    },
-    "exaltation": {
-      method: :in_exaltation?,
-      score: 4
-    },
-    "detriment": {
-      method: :in_detriment?,
-      score: -5
-    },
-    "fall": {
-      method: :in_fall?,
-      score: -4
-    },
-    "pilgrim": {
-      method: :in_pilgrim_sign?,
-      score: -2
-    },
-    "dispositor": {
-      method: :disposition,
-      score: 1
-    },
-    "decanate": {
-      method: :in_decanate?,
-      score: 1
-    },
-    "term": {
-      method: :in_term?,
-      score: 2
-    },
-    "direct": {
-      method: :direct?,
-      score: 4
-    },
-    "retrograde": {
-      method: :retrograde?,
-      score: -5
-    },
-    "fast": {
-      method: :fast?,
-      score: 2
-    },
-    "slow": {
-      method: :slow?,
-      score: -2
-    },
-    "stationary": {
-      method: :stationary?,
-      score: -1
-    },
-    "domicile_reception": {
-      method: :in_reception_of_domiciles?,
-      score: 5
-    },
-    "in_house_1": {
-      method: :in_house_1?,
-      score: 5
-    },
-    "in_house_2": {
-      method: :in_house_2?,
-      score: 3
-    },
-    "in_house_3": {
-      method: :in_house_3?,
-      score: 1
-    },
-    "in_house_4": {
-      method: :in_house_4?,
-      score: 4
-    },
-    "in_house_5": {
-      method: :in_house_5?,
-      score: 3
-    },
-    "in_house_6": {
-      method: :in_house_6?,
-      score: -5
-    },
-    "in_house_7": {
-      method: :in_house_7?,
-      score: 4
-    },
-    "in_house_8": {
-      method: :in_house_8?,
-      score: -5
-    },
-    "in_house_9": {
-      method: :in_house_9?,
-      score: 2
-    },
-    "in_house_10": {
-      method: :in_house_10?,
-      score: 5
-    },
-    "in_house_11": {
-      method: :in_house_11?,
-      score: 4
-    },
-    "in_house_12": {
-      method: :in_house_12?,
-      score: -4
-    },
-    "in_joy": {
-      method: :in_joy?,
-      score: 2
-    },
-  }.freeze
+  DIGNITY_SCORES = %w(domicile exaltation detriment fall pilgrim domicile_reception exaltation_reception
+                      dispositor decanate term direct retrograde fast slow stationary in_joy in_house_1
+                      in_house_2 in_house_3 in_house_4 in_house_5 in_house_6 in_house_7 in_house_8 in_house_9
+                      in_house_10 in_house_11 in_house_12).freeze
 
   def initialize(planets, options=nil)
     @options = options
     @planets = planets
+    @dignity_methods = YAML.load_file('./app/models/dignity_methods.yml')
+    @dignity_scores = YAML.load_file('./app/models/dignity_scores.yml')
   end
 
   # TO-DO: Refractor
   def calculate_for(planet)
     results = {}
     total_score = 0
-    DIGNITY_SCORES.each do |dignity, dignity_data|
-      score = dignity_data[:score]
-      if dignity == :dispositor
-        planet_count = planet.send(dignity_data[:method], @planets)
+    DIGNITY_SCORES.each do |dignity|
+      method = @dignity_methods[dignity]['method']
+      score = @dignity_scores[dignity]['score']
+
+      if dignity == 'dispositor'
+        planet_count = planet.send(method, @planets)
         dignified = planet_count > 0
         score = score * planet_count
-      elsif dignity == :domicile_reception || dignity == :exaltation_reception
-        dignified = planet.send(dignity_data[:method], @planets)
+      elsif dignity == 'domicile_reception' || dignity == 'exaltation_reception'
+        dignified = planet.send(method, @planets)
       else
-        dignified = planet.send(dignity_data[:method])
+        dignified = planet.send(method)
       end
 
       total_score += score if dignified
-      results[dignity] = {
+      results[dignity.to_sym] = {
         result: dignified,
         score: dignified ? score : 0
       }
