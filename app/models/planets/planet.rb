@@ -44,6 +44,10 @@ module Planets
       @fall == @current_sign
     end
 
+    def in_joy?
+      @house == @joy
+    end
+
     def in_decanate?
       @decanate == @name
     end
