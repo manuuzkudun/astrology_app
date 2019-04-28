@@ -48,6 +48,10 @@ module Planets
       @house == @joy
     end
 
+    def in_via_combusta?
+      (@current_sign.to_s == 'libra' && @sign_degree >= 19) || (@current_sign.to_s == 'scorpio' && @sign_degree <= 20)
+    end
+
     def in_decanate?
       @decanate == @name
     end

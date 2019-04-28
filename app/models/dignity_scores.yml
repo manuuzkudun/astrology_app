@@ -28,6 +28,9 @@ decanate:
 term:
   score: 2
 
+via_combusta:
+  score: -5
+
 direct:
   score: 4
 

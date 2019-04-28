@@ -1,8 +1,8 @@
 class DignityCalculator
   DIGNITY_SCORES = %w(domicile exaltation detriment fall pilgrim domicile_reception exaltation_reception
-                      dispositor decanate term direct retrograde fast slow stationary in_joy in_house_1
-                      in_house_2 in_house_3 in_house_4 in_house_5 in_house_6 in_house_7 in_house_8 in_house_9
-                      in_house_10 in_house_11 in_house_12).freeze
+                      dispositor decanate term direct retrograde fast slow stationary in_joy via_combusta
+                      in_house_1 in_house_2 in_house_3 in_house_4 in_house_5 in_house_6 in_house_7
+                      in_house_8 in_house_9 in_house_10 in_house_11 in_house_12).freeze
 
   def initialize(planets, options=nil)
     @options = options
