@@ -1,13 +1,12 @@
 module Planets
   class Planet
-    attr_reader :current_sign, :sign_degree, :decanate, :longitude, :name, :house, :speed
+    attr_reader :current_sign, :sign_degree, :decanate, :name, :house, :speed
 
     def initialize(params)
       @name = params[:planet_name]
       @current_sign = ZodiacSigns::ZodiacSignFactory.create(params[:current_sign])
       @house = params[:house]
       @sign_degree = params[:sign_degree]
-      @longitude = params[:longitude]
       @speed = params[:speed]
       @decanate = get_decanate(@current_sign, @sign_degree)
       @term = get_term(@current_sign, @sign_degree)
