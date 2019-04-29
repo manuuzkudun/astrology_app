@@ -28,6 +28,9 @@ decanate:
 term:
   method: :in_term?
 
+via_combusta:
+  method: :in_via_combusta?
+
 direct:
   method: :direct?
 

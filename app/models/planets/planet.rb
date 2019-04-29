@@ -43,6 +43,14 @@ module Planets
       @fall == @current_sign
     end
 
+    def in_joy?
+      @house == @joy
+    end
+
+    def in_via_combusta?
+      (@current_sign.in_libra? && @sign_degree >= 19) || (@current_sign.in_scorpio? && @sign_degree <= 20)
+    end
+
     def in_decanate?
       @decanate == @name
     end

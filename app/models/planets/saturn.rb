@@ -18,10 +18,7 @@ module Planets
       @fall = get_sign(FALL)
       @pilgrim_signs = get_signs(PILGRIM_SIGNS)
       @avrg_speed = AVRG_SPEED
-    end
-
-    def in_joy?
-      @house == JOY
+      @joy = JOY
     end
   end
 end

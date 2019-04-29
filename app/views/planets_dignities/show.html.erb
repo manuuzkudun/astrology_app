@@ -33,6 +33,7 @@
       <th>decanate</th>
       <th>term</th>
       <th>Joy</th>
+      <th>Via combusta</th>
       <th>Disposited planets</th>
       <th>Direct</th>
       <th>Retrograde</th>
@@ -105,9 +106,14 @@
           <td class="term"><%= planet[:dignities][:term][:score] %></td>
         <% end %>
         <% if planet[:dignities][:in_joy][:result]  %>
-          <td class="term scored">+<%= planet[:dignities][:in_joy][:score] %></td>
+          <td class="in_joy scored">+<%= planet[:dignities][:in_joy][:score] %></td>
         <% else %>
-          <td class="term"><%= planet[:dignities][:in_joy][:score] %></td>
+          <td class="in_joy"><%= planet[:dignities][:in_joy][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:via_combusta][:result]  %>
+          <td class="via_combusta scored">+<%= planet[:dignities][:via_combusta][:score] %></td>
+        <% else %>
+          <td class="via_combusta"><%= planet[:dignities][:via_combusta][:score] %></td>
         <% end %>
         <% if planet[:dignities][:dispositor][:result]  %>
           <td class="dispositor scored">+<%= planet[:dignities][:dispositor][:score] %></td>
