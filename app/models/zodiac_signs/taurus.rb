@@ -6,22 +6,9 @@ module ZodiacSigns
 
     def initialize
       @name = 'taurus'
-    end
-
-    def to_s
-      @name
-    end
-
-    def ruler
-      RULER
-    end
-
-    def decanates
-      DECANATES
-    end
-
-    def terms
-      TERMS
+      @ruler = RULER
+      @decanates = DECANATES
+      @terms = TERMS
     end
   end
 end
