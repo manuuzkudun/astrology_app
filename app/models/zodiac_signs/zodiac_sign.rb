@@ -1,6 +1,6 @@
 module ZodiacSigns
   class ZodiacSign
-    attr_reader :name, :ruler, :decanates, :terms
+    attr_reader :name, :ruler, :decanates, :terms, :element
 
     ZODIAC_SIGNS = %w(aries taurus gemini cancer leo virgo libra scorpio sagittarius
                       capricorn aquarius pisces).freeze
