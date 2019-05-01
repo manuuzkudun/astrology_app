@@ -32,6 +32,7 @@
       <th>pilgrim</th>
       <th>decanate</th>
       <th>term</th>
+      <th>triplicity</th>
       <th>Joy</th>
       <th>Via combusta</th>
       <th>Disposited planets</th>
@@ -104,6 +105,11 @@
           <td class="term scored">+<%= planet[:dignities][:term][:score] %></td>
         <% else %>
           <td class="term"><%= planet[:dignities][:term][:score] %></td>
+        <% end %>
+        <% if planet[:dignities][:triplicity][:result]  %>
+          <td class="triplicity scored">+<%= planet[:dignities][:triplicity][:score] %></td>
+        <% else %>
+          <td class="triplicity"><%= planet[:dignities][:triplicity][:score] %></td>
         <% end %>
         <% if planet[:dignities][:in_joy][:result]  %>
           <td class="in_joy scored">+<%= planet[:dignities][:in_joy][:score] %></td>

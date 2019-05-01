@@ -22,6 +22,9 @@ exaltation_reception:
 dispositor:
   method: :disposition
 
+triplicity:
+  method: :in_triplicity?
+
 decanate:
   method: :in_decanate?
 
