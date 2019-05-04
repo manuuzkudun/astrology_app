@@ -20,5 +20,9 @@ module Planets
       @avrg_speed = AVRG_SPEED
       @joy = JOY
     end
+
+    def morning_chart?
+      @house >= 7
+    end
   end
 end

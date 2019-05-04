@@ -23,6 +23,15 @@ module Planets
       end
     end
 
+    def in_triplicity?(other_planets)
+      sun = other_planets.select { |p| p.to_s == 'sun' }.first
+      if sun.morning_chart?
+        return @current_sign.element.morning_ruler == self.to_s
+      else
+        return @current_sign.element.night_ruler == self.to_s
+      end
+    end
+
     def in_domicile?
       @domiciles.any? { |d| d == @current_sign }
     end
