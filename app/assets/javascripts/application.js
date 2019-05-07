@@ -68,7 +68,7 @@ addInteractions = () => {
 },
 init = e => {
 
-  document.removeEventListener('DOMContentLoaded', init, false);
+  document.removeEventListener('turbolinks:load', init, false);
   //Store/Assign DOM Elements
   mySubmitBtn = document.getElementById('btn-submit');
   myInputs = Array.from(document.querySelectorAll('div.formgroup.primary input[type="text"]'));
@@ -78,4 +78,4 @@ init = e => {
 }
 
 //Entry Point
-document.addEventListener('DOMContentLoaded', init, false);
+document.addEventListener('turbolinks:load', init, false);
