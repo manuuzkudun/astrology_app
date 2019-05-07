@@ -44,7 +44,23 @@ const onInputLeave = e => {
 },
 addInteractions = () => {
 
-  console.log(mySubmitBtn);
+  // console.log(mySubmitBtn);
+
+  //Remove any alert if present sequentially by 2 second interval/delay
+
+  if(document.querySelector('p.alert ')) {
+
+      Array.from(document.querySelectorAll('p.alert')).forEach((el,i) => {
+        setTimeout(() => {el.parentNode.removeChild(el)}, (i + 1) * 2000 );
+      });
+  }
+
+  //Dropdown interaction - no external dependencies
+
+  document.querySelector('a.dropdown-toggle').addEventListener('click', (e) => {
+    e.target.parentNode.querySelector('div.dropdown-menu').style.display != 'block' ? e.target.parentNode.querySelector('div.dropdown-menu').style.display = 'block' : e.target.parentNode.querySelector('div.dropdown-menu').style.display = '';
+    e.preventDefault();
+  });
 
   //Only attempt to add interactions if we are on the new page (pathname agnostic)
 
@@ -60,6 +76,8 @@ addInteractions = () => {
     myInputs.map((_obj) => {
       _obj.addEventListener('blur', onInputLeave, false);
     });
+
+
 
   }
 
