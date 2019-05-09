@@ -3,6 +3,45 @@
 
 $scored: green; //positive dignity
 $unscored: red; //negative dignity
+$lightGray: #ccc; //light gray
+
+$montseFont: 'Montserrat', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+/* ==================================================
+GLOBAL STYLES
+================================================== */
+
+
+
+html,body {
+  width:100%;
+  height:100%;
+}
+
+p.alert {
+  position:fixed;
+  width:50%;
+  left:0;
+  right:0;
+  margin:auto;
+  text-align:center;
+  font-family:$montseFont;
+  font-size:0.813rem;
+  font-weight:700;
+
+  opacity:1;
+
+
+  transition:opacity 0.5s linear;
+
+}
+
+p.alert.faded {
+  opacity:0;
+}
+
+
+
 
 /* ==================================================
 STYLES FOR NEW USER PROFILES MENU
@@ -21,11 +60,246 @@ a.dropdown-toggle {
 STYLES FOR NEW VIEW (ROOT)
 ================================================== */
 
-div.primary {
-  input.submit-btn.disabled {
-    pointer-events: none;
+// TEMPORARY HIDE FILEDS ALREADY FILLED BY DATE-PICKER
+
+div.formgroup.primary {
+  width:50%;
+  margin:1rem auto;
+
+  div:nth-child(3){
+    margin:0 0 2rem 0;
+  }
+
+  input[placeholder] {
+    text-align: center;
   }
 }
+
+
+
+input#year, input#month, input#day, input#hour {
+  display:none;
+
+}
+
+
+
+div.primary {
+  input.submit-btn.disabled {
+
+    pointer-events: none;
+  }
+
+  // display:none;
+}
+
+/* ==================================================
+STYLES FOR WIDGETS HOLDER
+================================================== */
+
+div.widgets-holder {
+  width:50%;
+  margin:0 auto;
+
+}
+
+// Styles for date-picker
+
+div.widgets-holder .mtr-datepicker {
+  background:transparent none !important;
+  margin:0 auto !important;
+  font-family:$montseFont !important;
+  font-weight:700;
+}
+
+
+div.widgets-holder .mtr-datepicker .mtr-content .mtr-values .mtr-default-value, div.widgets-holder .mtr-datepicker .mtr-content .mtr-values .mtr-default-value-name, div.widgets-holder .mtr-datepicker .mtr-content .mtr-values .mtr-default-value.has-name {
+  background:#fff none  !important;
+  color:#000;
+
+}
+
+div.widgets-holder .mtr-datepicker .mtr-input-slider {
+  height:200px !important;
+
+  display:inline-block !important;
+  vertical-align: middle !important;
+  position:relative !important;
+}
+
+div.widgets-holder .mtr-datepicker .mtr-content .mtr-input, div.widgets-holder .mtr-datepicker .mtr-content input {
+  // background: $lightGray;
+  font-family: $montseFont;
+  font-size:1.5rem !important;
+  color:#000;
+  font-weight:700;
+}
+
+div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content .mtr-input {
+  height:80px !important;
+}
+
+
+
+div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content .mtr-values .mtr-default-value, div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content .mtr-values .mtr-default-value-holder {
+  height:80px !important;
+  line-height:80px !important;
+  font-size:1.5rem !important;
+}
+
+div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content {
+  height:80px !important;
+
+}
+
+div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-arrow.up {
+  border-bottom:$lightGray 0.063rem solid;
+
+}
+
+div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-arrow.down {
+  border-top:$lightGray 0.063rem solid;
+
+}
+
+
+div.widgets-holder .mtr-datepicker .mtr-row {
+  // position:static !important;
+  clear:none !important;
+  width:100% !important;
+  margin:1rem 0 0 0;
+}
+
+div.widgets-holder .mtr-default-value-name {
+  display:none !important;
+  line-height:0 !important;
+}
+
+
+
+div.widgets-holder .mtr-datepicker .mtr-row div.mtr-input-slider {
+  width:33.333% !important;
+  display:inline-block;
+  vertical-align: middle !important;
+  margin:0 !important;
+  padding:0 !important;
+  position:relative !important;
+}
+
+// MONTH DAY YEAR FIELDS Use Ids....
+
+div#mtr-datepicker-input-months .mtr-content .mtr-values .mtr-default-value-holder .mtr-default-value.has-name {
+  line-height:58px !important;
+}
+
+div#mtr-datepicker-input-dates .mtr-content .mtr-values .mtr-default-value-holder .mtr-default-value.has-name {
+  line-height:65px !important;
+}
+
+
+
+div#mtr-datepicker-input-months:after {
+  content:'month';
+  font-size:0.625rem;
+  font-weight:700;
+  font-family:$montseFont;
+  text-transform: uppercase;
+  color:$lightGray;
+  position:relative;
+  top:1rem;
+  width:100%;
+  display:block;
+  text-align:center;
+}
+
+div#mtr-datepicker-input-dates {
+  padding:0 2.5% !important;
+}
+
+div#mtr-datepicker-input-dates:after {
+  content:'day';
+  font-size:0.625rem;
+  font-weight:700;
+  font-family:$montseFont;
+  text-transform: uppercase;
+  color:$lightGray;
+  position:relative;
+  top:1rem;
+  width:100%;
+  display:block;
+  text-align:center;
+}
+
+div#mtr-datepicker-input-years:after {
+  content:'year';
+  font-size:0.625rem;
+  font-weight:700;
+  font-family:$montseFont;
+  text-transform: uppercase;
+  color:$lightGray;
+  position:relative;
+  top:1rem;
+  width:100%;
+  display:block;
+  text-align:center;
+}
+
+
+
+// HOUR/MINUTES FIELDS
+
+div.widgets-holder .mtr-datepicker .mtr-row:first-of-type {
+  margin:0 !important;
+}
+
+
+div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:first-of-type:after {
+  content:'hour';
+  font-size:0.625rem;
+  font-weight:700;
+  font-family:$montseFont;
+  text-transform: uppercase;
+  color:$lightGray;
+  position:relative;
+  top:1rem;
+  width:100%;
+  display:block;
+  text-align:center;
+}
+
+div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider {
+  width:45% !important;
+  display:inline-block;
+  vertical-align: middle !important;
+  margin:0;
+  padding:0;
+  position:relative !important;
+}
+
+div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:last-of-type:after {
+  content:'minutes';
+  font-size:0.625rem;
+  font-weight:700;
+  font-family:$montseFont;
+  text-transform: uppercase;
+  color:$lightGray;
+  position:relative;
+  top:1rem;
+  width:100%;
+  display:block;
+  text-align:center;
+}
+div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:first-of-type {
+  padding:0 2.5% 0 0 !important;
+}
+
+div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:last-of-type {
+  padding:0 0 0 2.5% !important;
+}
+
+
+
+
 
 /* ==================================================
 STYLES FOR PLANET DIGNITIES
@@ -34,18 +308,42 @@ STYLES FOR PLANET DIGNITIES
 div.container {
   // max-width:none;
   // width:95%;
-  h2 {
-    small {
-      color:gray;
-      text-transform: capitalize;
-      letter-spacing: 0;
-      font-size:1rem;
-    }
+  text-align:center;
+
+  h1 {
+    color:#000;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    font-size:0.813rem;
+    padding:0;
+    margin:0;
+    font-weight:700;
+    font-family:$montseFont;
+
+  }
+  h4 {
+    color:gray;
+    text-transform: uppercase;
+    padding:0;
+    margin:0.5rem 0 2rem 0;
+    font-size:0.625rem;
+    font-weight:700;
+    font-family:$montseFont;
+
   }
   h6 {
-    color:gray;
-    padding:0;
-    margin:1rem 0;
+    color:$lightGray;
+    text-transform: uppercase;
+    padding:0;;
+    font-size:0.625rem;
+    font-weight:700;
+    font-family:$montseFont;
+    width:50%;
+    margin:1rem auto;
+  }
+  hr {
+    width:50%;
+    color:$lightGray;
   }
   select {
     margin:0 0 .5rem 0 !important;
@@ -54,7 +352,7 @@ div.container {
     font-family:inherit;
   }
   input.btn {
-    margin:.5rem 0 0 0;
+    margin:.5rem 0 3rem 0;
   }
   label:last-of-type {
     margin:1.5rem 0 0 0;
@@ -79,7 +377,7 @@ div.container {
   div.re-submit-holder {
     text-align:right;
     a {
-      margin:1rem 0;
+      margin: 0;
     }
   }
 

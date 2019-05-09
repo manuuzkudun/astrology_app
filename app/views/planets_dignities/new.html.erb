@@ -1,10 +1,13 @@
-<div class="container mt-5">
-<h2>Astrology API <small>Planetary Quantification Online Tool</small></h2>
+<div class="container mt-3">
+<h1>Planetary Quantification</h1>
+<h4>Online Tool</h4>
 <hr></hr>
-<h6>Please enter your Natal Information</h6>
+<h6>Please enter Time and Date</h6>
 <hr></hr>
+<div id="widgets-holder" class="widgets-holder mt-5">
+  <div id="mtr-datepicker"></div>
+</div>
 <div class="formgroup primary">
-
     <%= form_tag("/planets_dignities/", :method => "get") do %>
       <div class="formgroup">
         <input id="latitude" name="latitude" type="text" class="form-control mb-2" placeholder="Latitude (i.e: 41.390205)">
