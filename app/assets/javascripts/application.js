@@ -20,8 +20,22 @@
 DECLARE GLOBAL VARS
 ================================================== */
 
-let myInputs, //Var to hold a reference for all the inputs containing user data
+let myFormGroup, //Var to hold a reference for the form group so we can populate its fileds according to changes on datepicker
+    myInputs, //Var to hold a reference for all the inputs containing user data
     mySubmitBtn; //Var to hold a reference for the Submit Button
+
+/* ==================================================
+UTILS FUNCTION
+================================================== */
+
+const leadingStringToZero = (_str) => {
+  _str.length < 2 ? _str = '0' + _str : null;
+  return _str;
+}
+
+/* ==================================================
+LOGIC FUNCTION
+================================================== */
 
 const onInputLeave = e => {
 
@@ -51,7 +65,8 @@ addInteractions = () => {
   if(document.querySelector('p.alert ')) {
 
       Array.from(document.querySelectorAll('p.alert')).forEach((el,i) => {
-        setTimeout(() => {el.parentNode.removeChild(el)}, (i + 1) * 2000 );
+        //setTimeout(() => {el.parentNode.removeChild(el)}, (i + 1) * 2000 );
+        setTimeout(() => {el.classList.add('faded')}, (i + 1) * 2000 );
       });
   }
 
@@ -78,6 +93,65 @@ addInteractions = () => {
     });
 
 
+    let initDate = new Date(1949, 12, 1);
+    let config = {
+      target: 'mtr-datepicker',
+      smartHours: false,
+      disableAmPm: true,
+      animations: true,
+      timestamp: initDate.getTime(),
+      minutes: {
+        min: 0,
+        max: 55,
+        step: 10
+      },
+      months: {
+        min: 0,
+        max: 11,
+        step: 1
+      },
+      years: {
+        min: 1950,
+        max: 2050,
+        step: 1
+      }
+    };
+    let myDatepicker = new MtrDatepicker(config);
+
+    myDatepicker.onChange('all', function(e) {
+
+      switch (e) {
+        case 'day':
+          console.log('day switched to ', document.querySelector('input.mtr-input.dates').value);
+          document.getElementById('day').value = document.querySelector('input.mtr-input.dates').value;
+        break;
+        case 'month':
+          console.log('months switched to ', document.querySelector('input.mtr-input.months').value);
+          // For some reason months are 0 based indexed...just add 1 to the result
+          document.getElementById('month').value = parseInt(document.querySelector('input.mtr-input.months').value) + 1;
+        break;
+        case 'year':
+          console.log('years switched to ', document.querySelector('input.mtr-input.years').value);
+          document.getElementById('year').value = document.querySelector('input.mtr-input.years').value;
+        break;
+        case 'hour':
+          console.log('hours switched to ', document.querySelector('input.mtr-input.hours').value);
+          document.getElementById('hour').value = document.querySelector('input.mtr-input.hours').value + ':' + leadingStringToZero(document.querySelector('input.mtr-input.minutes').value) ;
+        break;
+        case 'minute':
+          console.log('minutes switched to ', document.querySelector('input.mtr-input.minutes').value);
+          document.getElementById('hour').value = document.querySelector('input.mtr-input.hours').value + ':' + leadingStringToZero(document.querySelector('input.mtr-input.minutes').value);
+        break;
+        default:
+        //console.log(typeof e, e)
+        null;
+        break;
+
+      }
+
+    });
+
+
 
   }
 
@@ -85,6 +159,8 @@ addInteractions = () => {
 
 },
 init = e => {
+
+
 
   document.removeEventListener('turbolinks:load', init, false);
   //Store/Assign DOM Elements

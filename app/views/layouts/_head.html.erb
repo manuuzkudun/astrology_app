@@ -4,6 +4,14 @@
   <%= csp_meta_tag %>
 
   <!--<%= stylesheet_link_tag 'application', 'https://bootswatch.com/4/lux/bootstrap.min.css' %>-->
+  <!-- Loading stylesheet directly. For some reason it cannot be included in vendor folder (pipiline problem) -->
+  <!--<link data-turbolinks-track="true" href="/assets/mtr-datepicker.min.css" media="all"/>
+  <link data-turbolinks-track="true" href="/assets/mtr-datepicker.default-theme.min.css" media="all"/>-->
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- Loading calendar js directly. For some reason it cannot be included in vendor folder (pipiline problem) -->
+  <script src="/assets/mtr-datepicker.min.js" data-turbolinks-track="reload"></script>
 </head>
