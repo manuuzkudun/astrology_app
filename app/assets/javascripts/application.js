@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
 
@@ -171,5 +170,7 @@ init = e => {
 
 }
 
-//Entry Point
-document.addEventListener('turbolinks:load', init, false);
+
+
+// //Entry Point
+document.addEventListener('DOMContentLoaded', init, false);
