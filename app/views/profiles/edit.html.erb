@@ -1,0 +1,11 @@
+<h1>Dignity scores</h1>
+
+<%= form_with model: @profile, scope: 'score_config', method: :patch, local: true do |f| %>
+  <% @profile.score_config.each do |dignity, dignity_data| %>
+    <div class="formgroup">
+      <%= f.label dignity.capitalize %>
+      <%= f.number_field dignity, value: dignity_data['score'], min: -10, max: 10 %>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>
