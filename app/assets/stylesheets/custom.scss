@@ -16,6 +16,11 @@ GLOBAL STYLES
 html,body {
   width:100%;
   height:100%;
+  overflow-y:hidden;
+}
+
+.form-control:focus, .btn-primary:focus, .btn-primary.focus {
+  box-shadow:none !important;
 }
 
 p.alert {
@@ -40,6 +45,15 @@ p.alert.faded {
   opacity:0;
 }
 
+div.main {
+  width:100%;
+  height:100%;
+  opacity:1;
+  overflow-y:auto;
+
+  transition:opacity 0.5s linear;
+}
+
 
 
 
@@ -62,242 +76,176 @@ STYLES FOR NEW VIEW (ROOT)
 
 // TEMPORARY HIDE FILEDS ALREADY FILLED BY DATE-PICKER
 
-div.formgroup.primary {
-  width:50%;
-  margin:1rem auto;
+div.formgroup {
+  width:55%;
+  margin:0 auto;
 
-  div:nth-child(3){
-    margin:0 0 2rem 0;
+  .form-control {
+    height:100%;
   }
 
-  input[placeholder] {
-    text-align: center;
-  }
+
 }
 
-
-
-input#year, input#month, input#day, input#hour {
+div.primary div.formgroup, input.btn-mq {
   display:none;
-
 }
-
 
 
 div.primary {
-  input.submit-btn.disabled {
 
+  input.submit-btn {
+    text-align:center;
+  }
+
+  input.submit-btn.disabled {
     pointer-events: none;
   }
 
-  // display:none;
 }
 
 /* ==================================================
-STYLES FOR WIDGETS HOLDER
+STYLES FOR MAP QUEST
 ================================================== */
 
-div.widgets-holder {
-  width:50%;
-  margin:0 auto;
+  div.holder-mq {
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.95) none;
 
+    transform:translateY(100%);
+    transition:transform 0.35s ease-out;
+
+    div.map_mq {
+      width:100%;
+      height:100%;
+    }
+
+
+
+    div.closer-mq {
+      position:absolute;
+      width:2rem;
+      height:2rem;
+      border-radius:2rem;
+      background:#fff none;
+      top:1.35rem;
+      right:1.35rem;
+      cursor:pointer;
+      z-index:1000;
+
+      span {
+        display:block;
+        width:100%;
+        height:100%;
+        background:transparent url('/assets/close.svg') no-repeat center center;
+        background-size:1rem;
+
+        transform:rotate(0deg);
+        transition:transform 0.25s ease-out;
+
+      }
+
+
+    }
+
+    div.closer-mq:hover {
+      span {
+        transform:rotate(180deg);
+      }
+    }
+
+  }
+
+
+  div.mq-ui {
+    position:relative;
+    overflow:hidden;
+    max-height:3.500rem;
+    height:100%;
+
+    div.mq-ui--miniform {
+      background:red none;
+      height:100%;
+
+      transform:translateY(0);
+      transition:transform ease 0.5s;
+
+      input {
+        min-height:3.500rem;
+        height:100%;
+      }
+
+
+      input.msg-mq {
+        background-color:#1a1a1a;
+        // transition:background-color none;
+
+      }
+
+      input.msg-mq {
+        color:#fff !important;
+      }
+    }
+
+    div.mq-ui--miniform.show-msg {
+      transform:translateY(-3.500rem);
+    }
+
+
+    button.mq-btn {
+      position:absolute;
+      top:0;
+      right:0.938rem;
+      height:100%;
+
+      transform:translateX(0);
+
+      transition:transform 0.25s ease-out;
+
+      background-image: url('/assets/location-pointer.svg');
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:1rem;
+    }
+
+    button.mq-btn:not(.set):hover {
+      background-color:rgba(0,0,255,1);
+    }
+
+    button.mq-btn.set {
+      background:rgba(0,255,0,.25) none;
+    }
+  }
+
+  div.mq-ui.disabled {
+    div.mq-ui--miniform {
+      pointer-events: none;
+
+
+      input::placeholder {
+        opacity:.5;
+        cursor: none;
+      }
+
+    }
+  }
+
+/* ==================================================
+NEW.ERB CSS OVERRIDES
+================================================== */
+
+body.has-map  {
+  div.main {
+    opacity:0;
+  }
+  div.holder-mq {
+    transform:translateY(0);
+  }
 }
-
-// Styles for date-picker
-
-div.widgets-holder .mtr-datepicker {
-  background:transparent none !important;
-  margin:0 auto !important;
-  font-family:$montseFont !important;
-  font-weight:700;
-}
-
-
-div.widgets-holder .mtr-datepicker .mtr-content .mtr-values .mtr-default-value, div.widgets-holder .mtr-datepicker .mtr-content .mtr-values .mtr-default-value-name, div.widgets-holder .mtr-datepicker .mtr-content .mtr-values .mtr-default-value.has-name {
-  background:#fff none  !important;
-  color:#000;
-
-}
-
-div.widgets-holder .mtr-datepicker .mtr-input-slider {
-  height:200px !important;
-
-  display:inline-block !important;
-  vertical-align: middle !important;
-  position:relative !important;
-}
-
-div.widgets-holder .mtr-datepicker .mtr-content .mtr-input, div.widgets-holder .mtr-datepicker .mtr-content input {
-  // background: $lightGray;
-  font-family: $montseFont;
-  font-size:1.5rem !important;
-  color:#000;
-  font-weight:700;
-}
-
-div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content .mtr-input {
-  height:80px !important;
-}
-
-
-
-div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content .mtr-values .mtr-default-value, div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content .mtr-values .mtr-default-value-holder {
-  height:80px !important;
-  line-height:80px !important;
-  font-size:1.5rem !important;
-}
-
-div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-content {
-  height:80px !important;
-
-}
-
-div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-arrow.up {
-  border-bottom:$lightGray 0.063rem solid;
-
-}
-
-div.widgets-holder .mtr-datepicker .mtr-input-slider .mtr-arrow.down {
-  border-top:$lightGray 0.063rem solid;
-
-}
-
-
-div.widgets-holder .mtr-datepicker .mtr-row {
-  // position:static !important;
-  clear:none !important;
-  width:100% !important;
-  margin:1rem 0 0 0;
-}
-
-div.widgets-holder .mtr-default-value-name {
-  display:none !important;
-  line-height:0 !important;
-}
-
-
-
-div.widgets-holder .mtr-datepicker .mtr-row div.mtr-input-slider {
-  width:33.333% !important;
-  display:inline-block;
-  vertical-align: middle !important;
-  margin:0 !important;
-  padding:0 !important;
-  position:relative !important;
-}
-
-// MONTH DAY YEAR FIELDS Use Ids....
-
-div#mtr-datepicker-input-months .mtr-content .mtr-values .mtr-default-value-holder .mtr-default-value.has-name {
-  line-height:58px !important;
-}
-
-div#mtr-datepicker-input-dates .mtr-content .mtr-values .mtr-default-value-holder .mtr-default-value.has-name {
-  line-height:65px !important;
-}
-
-
-
-div#mtr-datepicker-input-months:after {
-  content:'month';
-  font-size:0.625rem;
-  font-weight:700;
-  font-family:$montseFont;
-  text-transform: uppercase;
-  color:$lightGray;
-  position:relative;
-  top:1rem;
-  width:100%;
-  display:block;
-  text-align:center;
-}
-
-div#mtr-datepicker-input-dates {
-  padding:0 2.5% !important;
-}
-
-div#mtr-datepicker-input-dates:after {
-  content:'day';
-  font-size:0.625rem;
-  font-weight:700;
-  font-family:$montseFont;
-  text-transform: uppercase;
-  color:$lightGray;
-  position:relative;
-  top:1rem;
-  width:100%;
-  display:block;
-  text-align:center;
-}
-
-div#mtr-datepicker-input-years:after {
-  content:'year';
-  font-size:0.625rem;
-  font-weight:700;
-  font-family:$montseFont;
-  text-transform: uppercase;
-  color:$lightGray;
-  position:relative;
-  top:1rem;
-  width:100%;
-  display:block;
-  text-align:center;
-}
-
-
-
-// HOUR/MINUTES FIELDS
-
-div.widgets-holder .mtr-datepicker .mtr-row:first-of-type {
-  margin:0 !important;
-}
-
-
-div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:first-of-type:after {
-  content:'hour';
-  font-size:0.625rem;
-  font-weight:700;
-  font-family:$montseFont;
-  text-transform: uppercase;
-  color:$lightGray;
-  position:relative;
-  top:1rem;
-  width:100%;
-  display:block;
-  text-align:center;
-}
-
-div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider {
-  width:45% !important;
-  display:inline-block;
-  vertical-align: middle !important;
-  margin:0;
-  padding:0;
-  position:relative !important;
-}
-
-div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:last-of-type:after {
-  content:'minutes';
-  font-size:0.625rem;
-  font-weight:700;
-  font-family:$montseFont;
-  text-transform: uppercase;
-  color:$lightGray;
-  position:relative;
-  top:1rem;
-  width:100%;
-  display:block;
-  text-align:center;
-}
-div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:first-of-type {
-  padding:0 2.5% 0 0 !important;
-}
-
-div.widgets-holder .mtr-datepicker .mtr-row:first-of-type div.mtr-input-slider:last-of-type {
-  padding:0 0 0 2.5% !important;
-}
-
-
 
 
 
@@ -338,8 +286,8 @@ div.container {
     font-size:0.625rem;
     font-weight:700;
     font-family:$montseFont;
-    width:50%;
-    margin:1rem auto;
+    // width:50%;
+    // margin:1rem auto;
   }
   hr {
     width:50%;
@@ -352,7 +300,7 @@ div.container {
     font-family:inherit;
   }
   input.btn {
-    margin:.5rem 0 3rem 0;
+    margin:2.5rem 0 3rem 0;
   }
   label:last-of-type {
     margin:1.5rem 0 0 0;
