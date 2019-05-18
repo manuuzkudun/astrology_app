@@ -1,33 +1,82 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  months:
+    january: 'January'
+    february: 'February'
+    march: 'March'
+    april: 'April'
+    may: 'May'
+    june: 'June'
+    july: 'July'
+    august: 'August'
+    september: 'September'
+    october: 'October'
+    november: 'November'
+    december: 'December'
+  planets:
+    sun: 'Sun'
+    moon: 'Moon'
+    mercury: 'Mercury'
+    venus: 'Venus'
+    mars: 'Mars'
+    jupiter: 'Jupiter'
+    saturn: 'Saturn'
+  zodiac_signs:
+    aries: 'Aries'
+    taurus: 'Taurus'
+    gemini: 'Gemini'
+    cancer: 'Cancer'
+    leo: 'Leo'
+    virgo: 'Virgo'
+    libra: 'Libra'
+    scorpio: 'Scorpio'
+    sagittarius: 'Sagittarius'
+    capricorn: 'Capricorn'
+    aquarius: 'Aquarius'
+    pisces: 'Pisces'
+  planet_dignities:
+    planet: 'Planet'
+    sign: 'Sign'
+    degree: 'Degree'
+    house: 'House'
+    domicile: 'Domicile'
+    exaltation: 'Exaltation'
+    detriment: 'Detriment'
+    fall: 'Fall'
+    pilgrim: 'Pilgrim'
+    triplicity: 'Triplicity'
+    term: 'Term'
+    decanate: 'Decanate'
+    joy: 'Joy'
+    fast: 'Fast'
+    slow: 'Slow'
+    stationary: 'Stationary'
+    direct: 'Direct'
+    retrograde: 'Retrograde'
+    via_combusta: 'Via combusta'
+    domicile_reception: 'Domicile reception'
+    exaltation_reception: 'Exaltation reception'
+    diposited_planets: 'Disposited planets'
+    score: 'Score'
+  home_page:
+    set_location: 'Please set a location'
+    set_date: 'Please set a date'
+    set_time: 'Please set a time'
+    get_results: 'Get results'
+    select_country: 'Select country'
+    select_day: 'Select day'
+    select_month: 'Select month'
+    select_year: 'Select year'
+    select_hour: 'Select hour'
+    select_minutes: 'Select minutes'
+    type_city: 'Type city or locate on map'
+  results_page:
+    results: 'Results'
+    enter_new_data: 'Enter new data'
+  global:
+    navigation:
+      preferences: "User preferences"
+      edit_profile: "Edit profile"
+      logout: "logout"
+      sign_up: "Sign up"
+      login: "Login"
+  planet_dignities:
