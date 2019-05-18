@@ -4,11 +4,10 @@ class DignityCalculator
                       in_house_1 in_house_2 in_house_3 in_house_4 in_house_5 in_house_6 in_house_7
                       in_house_8 in_house_9 in_house_10 in_house_11 in_house_12 triplicity).freeze
 
-  def initialize(planets, options=nil)
-    @options = options
+  def initialize(planets, score_config)
+    @score_config = score_config
     @planets = planets
     @dignity_methods = YAML.load_file('./app/models/dignity_methods.yml')
-    @dignity_scores = YAML.load_file('./app/models/dignity_scores.yml')
   end
 
   # TO-DO: Refractor
@@ -31,7 +30,7 @@ class DignityCalculator
 
   def get_dignity_score(planet, dignity)
     method = @dignity_methods[dignity]['method']
-    score = @dignity_scores[dignity]['score']
+    score = @score_config[dignity]['score']
 
     case dignity
     when 'dispositor'
