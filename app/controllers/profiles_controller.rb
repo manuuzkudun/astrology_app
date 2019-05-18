@@ -4,18 +4,18 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    current_user.profile.update!(score_config: parse_dignity_scores)
+    current_user.profile.update!(score_config: dignity_scores)
+    redirect_to :controller => 'planets_dignities', :action => 'new'
   end
 
   private
 
-  def parse_dignity_scores
-    dignity_scores = {}
-    params[:score_config].each do |dignity, dignity_data|
-      binding.pry
-      dignity_scores[dignity] = dignity_data['score'].to_i
+  def dignity_scores
+    scores = {}
+    params[:score_config].each do |dignity, score|
+      scores[dignity] = { 'score' => score.to_i }
     end
-    dignity_scores
+    scores
   end
 
 

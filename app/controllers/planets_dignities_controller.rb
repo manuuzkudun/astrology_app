@@ -13,7 +13,7 @@ class PlanetsDignitiesController < ApplicationController
       planet = Planets::PlanetFactory.create(ephem_data)
     end
 
-    dignity_calculator = DignityCalculator.new(planetsData)
+    dignity_calculator = DignityCalculator.new(planetsData, score_config)
 
     @planets_dignities = planetsData.map do |planet|
       {
@@ -28,6 +28,14 @@ class PlanetsDignitiesController < ApplicationController
   end
 
   private
+
+  def score_config
+    if current_user && current_user.profile && current_user.profile.score_config
+      current_user.profile.score_config
+    else
+      YAML.load_file('./app/models/dignity_scores.yml')
+    end
+  end
 
   def permitted_params
     params.permit("latitude", "longitude", "year", "month", "day", "hour")
