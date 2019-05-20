@@ -27,12 +27,12 @@
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Password</span>
+          <span class="input-group-text">Password<sup>2</sup></span>
         </div>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Please, confirm your password" %>
       </div>
-      <div class="login-controls">
-        <div class="login-controls--btn">
+      <div class="secondary-nav-controls">
+        <div class="secondary-nav-controls--btn">
           <%= f.submit "Sign Up", class: "actions btn btn-primary" %>
         </div>
       </div>

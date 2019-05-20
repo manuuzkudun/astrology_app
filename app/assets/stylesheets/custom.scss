@@ -51,6 +51,7 @@ div.main {
   height:100%;
   opacity:1;
   overflow-y:auto;
+  padding:0 0 5rem 0;
 
   transition:opacity 0.5s linear;
 }
@@ -276,13 +277,13 @@ div.formgroup.single {
 
 
 
-  div.login-controls {
+  div.secondary-nav-controls {
     width:100%;
     padding:0;
     text-align:right;
     position:relative;
 
-    .login-controls--remember {
+    .secondary-nav-controls--remember {
 
       label {
         margin:0;
@@ -309,13 +310,40 @@ div.site-mapping {
 }
 
 
+/* Messages
+=================================================== */
+
+div.security-msg {
+  p {
+    font-size:0.813rem;
+    // font-family:$montseFont;
+    margin:0;
+    // text-align:left;
+  }
+}
 
 
+/* ============================================================
+STYLES FOR PLANET DIGNITIES EDITABLE VALUES (PROFILES/EDIT.ERB)
+============================================================= */
 
+  div.dinity-val {
 
+    div.input-group-prepend {
+      width:50%;
+    }
+
+    span {
+      width:100%;
+    }
+    input {
+      text-align:right;
+    }
+
+  }
 
 /* ==================================================
-STYLES FOR PLANET DIGNITIES
+STYLES FOR PLANET DIGNITIES (SHOW.ERB)
 ================================================== */
 
 div.container {
