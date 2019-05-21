@@ -1,11 +1,8 @@
-<div id="main" class="main">
-  <div class="container mt-3">
-    <h1><a href="/">Planetary Quantification</a></h1>
-    <h4>Online Tool</h4>
-    <hr></hr>
-    <h6>Log In</h6>
-    <hr></hr>
-  </div>
+<div class="container">
+  <hr></hr>
+  <h6>Log In</h6>
+  <hr></hr>
+</div>
   <div class="container formgroup single mt-4">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="input-group mb-3">
@@ -41,4 +38,3 @@
   <div class="container site-mapping mt-2">
     <h6><%= render "devise/shared/links" %></h6>
   </div>
-</div>

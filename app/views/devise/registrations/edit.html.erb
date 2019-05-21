@@ -2,10 +2,7 @@
 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <p.alert alert-primary>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
 <% end %>
-<div id="main" class="main">
-  <div class="container mt-3">
-    <h1><a href="/">Planetary Quantification</a></h1>
-    <h4>Online Tool</h4>
+  <div class="container">
     <hr></hr>
     <h6>Edit <%= resource_name.to_s.humanize %></h6>
     <hr></hr>
@@ -70,4 +67,3 @@
   <div class="container site-mapping mt-2">
     <h6><%= link_to "Go Back", :back %></h6>
   </div>
-</div>

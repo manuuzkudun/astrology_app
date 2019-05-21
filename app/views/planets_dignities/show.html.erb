@@ -12,12 +12,10 @@
   "11" => "XI",
   "12" => "XII"
 }%>
-<div id="main" class="main">
   <div class="container mt-3">
-    <h1>Planetary Quantification</h1>
-    <h4>Online Tool</h4>
     <hr></hr>
-    <h6>results</h6>
+    <h6>Results</h6>
+    <hr></hr>
   </div>
   <div class="container mt-3 mb-5">
     <table class="table table-hover table-responsive">
@@ -49,9 +47,7 @@
       </tr>
       </thead>
     <tbody>
-
     <% @planets_dignities.each do |planet| %>
-    <!--<%= planet[:dignities]  %>-->
         <tr>
           <td class="planet"><%= planet[:planet_name].capitalize %></td>
           <td class="sign"><%= planet[:current_sign].to_s.capitalize %></td>
@@ -164,30 +160,11 @@
             <td class="score unscored"><%= planet[:dignities]["total_score"] %></td>
             <% end %>
           <% end %>
-
-
-
-        <!-- <p>Planet: <%= planet[:planet_name].capitalize %></p>
-        <p>Current sign: <%= planet[:current_sign].to_s.capitalize %></p>
-        <p>Sign degree: <%= planet[:sign_degree].round(2) %></p>
-        <p>Speed: <%= planet[:speed].round(4) %></p>
-        <p>House: <%= planet[:house] %></p>
-        <p>Dignities:</p>
-        <ul>
-        <% planet[:dignities].each do |dignity, data| %>
-          <% if data.class == Hash && data[:result] %>
-            <li><%= dignity.capitalize %>: <%= data[:score] %></li>
-          <% end %>
-        <% end %>
-        </ul>
-        <p>Total dignity: <%= planet[:dignities]["total_score"] %></p> -->
         </tr>
       <% end %>
     </tbody>
-    <table>
-    <!--<%= link_to "Home", "/" %>-->
-      <div class="re-submit-holder mb-5">
-        <a class="btn btn-primary" href="/" role="button">Enter New Data</a>
-      </div>
+    </table>
+    <div class="re-submit-holder mb-5">
+      <a class="btn btn-primary" href="/" role="button">Enter New Data</a>
     </div>
-</div>
+  </div>

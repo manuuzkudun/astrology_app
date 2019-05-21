@@ -1,18 +1,11 @@
-<div id="main" class="main">
-  <div class="container mt-3">
-    <h1><a href="/">Planetary Quantification</a></h1>
-    <h4>Online Tool</h4>
+  <div class="container">
     <hr></hr>
-    <h6>Dignity Scores</h6>
+    <h6>Planet Dignities</h6>
     <hr></hr>
   </div>
   <div class="container formgroup single mt-4">
     <%= form_with model: @profile, scope: 'score_config', method: :patch, local: true do |f| %>
       <% @profile.score_config.each do |dignity, dignity_data| %>
-        <!-- <div class="formgroup">
-          <%= f.label dignity.capitalize %>
-          <%= f.number_field dignity, value: dignity_data['score'], min: -10, max: 10 %>
-        </div> -->
         <div class="input-group dinity-val mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text"><%= dignity.capitalize %></span>
@@ -20,7 +13,6 @@
           <%= f.number_field dignity, value: dignity_data['score'], min: -10, max: 10, class:"form-control" %>
         </div>
       <% end %>
-      <!-- <%= f.submit %>-->
       <div class="secondary-nav-controls">
         <div class="secondary-nav-controls--btn">
           <%= f.submit "update values", class: "actions btn btn-primary" %>
@@ -28,4 +20,3 @@
       </div>
     <% end %>
   </div>
-</div>
