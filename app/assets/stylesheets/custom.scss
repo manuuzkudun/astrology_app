@@ -34,6 +34,7 @@ p.alert {
   font-size:0.813rem;
   font-weight:700;
 
+
   opacity:1;
 
 
@@ -50,6 +51,7 @@ div.main {
   height:100%;
   opacity:1;
   overflow-y:auto;
+  padding:0 0 5rem 0;
 
   transition:opacity 0.5s linear;
 }
@@ -245,88 +247,4 @@ body.has-map  {
   div.holder-mq {
     transform:translateY(0);
   }
-}
-
-
-
-/* ==================================================
-STYLES FOR PLANET DIGNITIES
-================================================== */
-
-div.container {
-  // max-width:none;
-  // width:95%;
-  text-align:center;
-
-  h1 {
-    color:#000;
-    text-transform: uppercase;
-    letter-spacing: 0.125rem;
-    font-size:0.813rem;
-    padding:0;
-    margin:0;
-    font-weight:700;
-    font-family:$montseFont;
-
-  }
-  h4 {
-    color:gray;
-    text-transform: uppercase;
-    padding:0;
-    margin:0.5rem 0 2rem 0;
-    font-size:0.625rem;
-    font-weight:700;
-    font-family:$montseFont;
-
-  }
-  h6 {
-    color:$lightGray;
-    text-transform: uppercase;
-    padding:0;;
-    font-size:0.625rem;
-    font-weight:700;
-    font-family:$montseFont;
-    // width:50%;
-    // margin:1rem auto;
-  }
-  hr {
-    width:50%;
-    color:$lightGray;
-  }
-  select {
-    margin:0 0 .5rem 0 !important;
-    outline:none;
-    min-height:3rem;
-    font-family:inherit;
-  }
-  input.btn {
-    margin:2.5rem 0 3rem 0;
-  }
-  label:last-of-type {
-    margin:1.5rem 0 0 0;
-  }
-
-  table {
-    td.scored {
-      color:$scored;
-    }
-    td.unscored {
-      color:$unscored;
-    }
-    td {
-      span.scored {
-        color:$scored;
-      }
-      span.unscored {
-        color:$unscored;
-      }
-    }
-  }
-  div.re-submit-holder {
-    text-align:right;
-    a {
-      margin: 0;
-    }
-  }
-
 }

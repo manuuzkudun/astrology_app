@@ -12,10 +12,7 @@
   "11" => "XI",
   "12" => "XII"
 }%>
-<div id="main" class="main">
   <div class="container mt-3">
-    <h1>Planetary Quantification</h1>
-    <h4>Online Tool</h4>
     <hr></hr>
     <h6><%= t("results_page.results") %></h6>
   </div>
@@ -49,7 +46,6 @@
       </tr>
       </thead>
     <tbody>
-
     <% @planets_dignities.each do |planet| %>
         <tr>
           <td class="planet"><%= t("planets.#{planet[:planet_name]}") %></td>
@@ -171,4 +167,4 @@
         <a class="btn btn-primary" href="/" role="button"><%= t("results_page.enter_new_data") %></a>
       </div>
     </div>
-</div>
+  </div>
