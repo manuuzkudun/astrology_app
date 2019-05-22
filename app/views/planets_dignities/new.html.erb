@@ -1,13 +1,13 @@
 <div class="container">
 <hr></hr>
-<h6>Please Set Location</h6>
+<h6><%= t("home_page.set_location") %></h6>
 <hr></hr>
 </div>
   <div class="container mt-3 formgroup secondary">
     <div class="row">
       <div class="col-sm">
-        <select id="country_mq" class="form-control country-mq" title="Select a Country">
-          <option selected="selected" value="none">Select Country</option>
+        <select id="country_mq" class="form-control country-mq" title=<%= t("home_page.select_country") %>>
+          <option selected="selected" value="none"><%= t("home_page.select_country") %></option>
           <option value="AF">Afghanistan</option>
           <option value="AL">Albania</option>
           <option value="DZ">Algeria</option>
@@ -250,7 +250,7 @@
       </div>
       <div class="col-sm mq-ui disabled">
         <div class="mq-ui--miniform">
-          <input class="input-text form-control city-mq" id="city_mq" placeholder="Type city or locate on map" type="text" title="Type city or locate on map">
+          <input class="input-text form-control city-mq" id="city_mq" placeholder="<%= t("home_page.type_city") %>" type="text" title=<%= t("home_page.type_city") %>>
           <input class="input-text form-control msg-mq" id="msg_mq" placeholder="Some text will go here" type="text" value="Some text goes here" disabled>
         </div>
         <button id="btn-mq" class="btn btn-primary mq-btn" type="button"></button>
@@ -259,14 +259,14 @@
   </div>
   <div class="container mt-3">
     <hr></hr>
-    <h6>Please Set Date</h6>
+    <h6><%= t("home_page.set_date") %></h6>
     <hr></hr>
   </div>
   <div class="container mt-3 formgroup secondary">
     <div class="row">
       <div class="col-sm">
-        <select id="data-day" class="form-control day" title="Select Day">
-          <option value="none" selected="selected">Select Day</option>
+        <select id="data-day" class="form-control day" title=<%= t("home_page.select_day") %>>
+          <option value="none" selected="selected"><%= t("home_page.select_day") %></option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -301,25 +301,25 @@
         </select>
       </div>
       <div class="col-sm">
-        <select id="data-month" class="form-control month" title="Select Month">
-          <option value="none" selected="selected">Select Month</option>
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
-          <option value="7">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
+        <select id="data-month" class="form-control month" title=<%= t("home_page.select_month") %>>
+          <option value="none" selected="selected"><%= t("home_page.select_month") %></option>
+          <option value="1"><%= t("months.january") %></option>
+          <option value="2"><%= t("months.february") %></option>
+          <option value="3"><%= t("months.march") %></option>
+          <option value="4"><%= t("months.april") %></option>
+          <option value="5"><%= t("months.may") %></option>
+          <option value="6"><%= t("months.june") %></option>
+          <option value="7"><%= t("months.july") %></option>
+          <option value="8"><%= t("months.august") %></option>
+          <option value="9"><%= t("months.september") %></option>
+          <option value="10"><%= t("months.october") %></option>
+          <option value="11"><%= t("months.november") %></option>
+          <option value="12"><%= t("months.december") %></option>
         </select>
       </div>
       <div class="col-sm">
-        <select id="data-year" class="form-control year" title="Select Year">
-          <option value="none" selected="selected">Select Year</option>
+        <select id="data-year" class="form-control year" title=<%= t("home_page.select_year") %>>
+          <option value="none" selected="selected"><%= t("home_page.select_year") %></option>
           <option value="1900">1900</option>
           <option value="1901">1901</option>
           <option value="1902">1902</option>
@@ -477,14 +477,14 @@
   </div>
   <div class="container mt-3">
     <hr></hr>
-    <h6>Please Set time</h6>
+    <h6><%= t("home_page.set_time") %></h6>
     <hr></hr>
   </div>
   <div class="container mt-3 formgroup secondary">
     <div class="row">
       <div class="col-sm">
-        <select id="data-time-hour" class="form-control hour" title="Select Hour">
-          <option value="none" selected="selected">Select Hour</option>
+        <select id="data-time-hour" class="form-control hour" title=<%= t("home_page.select_hour") %>>
+          <option value="none" selected="selected"><%= t("home_page.select_hour") %></option>
           <option value="00">00</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -512,8 +512,8 @@
         </select>
       </div>
       <div class="col-sm">
-        <select id="data-time-minutes" class="form-control minutes" title="Select Minutes">
-          <option value="none" selected="selected">Select Minutes</option>
+        <select id="data-time-minutes" class="form-control minutes" title=<%= t("home_page.select_minutes") %>>
+          <option value="none" selected="selected"><%= t("home_page.select_minutes") %></option>
           <option value="00">00</option>
           <option value="01">01</option>
           <option value="02">02</option>
@@ -598,6 +598,7 @@
         <div class="formgroup">
           <input id="hour" name="hour" type="text" class="form-control mb-2" placeholder="Hour (i.e: 04:24 or 15:30)">
         </div>
-        <input id="btn-submit" type="submit" name="commit" data-disable-with="Get Results" value="Get Results" class="btn btn-primary submit-btn">
+        <input id="btn-submit" type="submit" name="commit" data-disable-with="Get Results" value=<%= t("home_page.get_results") %> class="btn btn-primary submit-btn">
       <% end %>
+
     </div>

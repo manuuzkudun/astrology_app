@@ -14,43 +14,42 @@
 }%>
   <div class="container mt-3">
     <hr></hr>
-    <h6>Results</h6>
-    <hr></hr>
+    <h6><%= t("results_page.results") %></h6>
   </div>
   <div class="container mt-3 mb-5">
     <table class="table table-hover table-responsive">
     <thead>
       <tr>
-        <th>planet</th>
-        <th>sign</th>
-        <th>house</th>
-        <th>degree</th>
-        <th>domicile</th>
-        <th>D.recep</th>
-        <th>exaltation</th>
-        <th>E.recep</th>
-        <th>detriment</th>
-        <th>fall</th>
-        <th>pilgrim</th>
-        <th>decanate</th>
-        <th>term</th>
-        <th>triplicity</th>
-        <th>Joy</th>
-        <th>Via combusta</th>
-        <th>Disposited planets</th>
-        <th>Direct</th>
-        <th>Retrograde</th>
-        <th>Fast</th>
-        <th>Slow</th>
-        <th>Stationary</th>
-        <th>score</th>
+        <th><%= t("planet_dignities.planet") %></th>
+        <th><%= t("planet_dignities.sign") %></th>
+        <th><%= t("planet_dignities.house") %></th>
+        <th><%= t("planet_dignities.degree") %></th>
+        <th><%= t("planet_dignities.domicile") %></th>
+        <th><%= t("planet_dignities.domicile_reception") %></th>
+        <th><%= t("planet_dignities.exaltation") %></th>
+        <th><%= t("planet_dignities.exaltation_reception") %></th>
+        <th><%= t("planet_dignities.detriment") %></th>
+        <th><%= t("planet_dignities.fall") %></th>
+        <th><%= t("planet_dignities.pilgrim") %></th>
+        <th><%= t("planet_dignities.decanate") %></th>
+        <th><%= t("planet_dignities.term") %></th>
+        <th><%= t("planet_dignities.triplicity") %></th>
+        <th><%= t("planet_dignities.joy") %></th>
+        <th><%= t("planet_dignities.via_combusta") %></th>
+        <th><%= t("planet_dignities.diposited_planets") %></th>
+        <th><%= t("planet_dignities.direct") %></th>
+        <th><%= t("planet_dignities.retrograde") %></th>
+        <th><%= t("planet_dignities.fast") %></th>
+        <th><%= t("planet_dignities.slow") %></th>
+        <th><%= t("planet_dignities.stationary") %></th>
+        <th><%= t("planet_dignities.score") %></th>
       </tr>
       </thead>
     <tbody>
     <% @planets_dignities.each do |planet| %>
         <tr>
-          <td class="planet"><%= planet[:planet_name].capitalize %></td>
-          <td class="sign"><%= planet[:current_sign].to_s.capitalize %></td>
+          <td class="planet"><%= t("planets.#{planet[:planet_name]}") %></td>
+          <td class="sign"><%= t("zodiac_signs.#{planet[:current_sign].to_s}") %></td>
           <% (1..12).each do |house| %>
           <% if planet[:dignities][:"in_house_#{house}"][:result] %>
             <% if planet[:dignities][:"in_house_#{house}"][:score] > 0 %>
@@ -163,8 +162,9 @@
         </tr>
       <% end %>
     </tbody>
-    </table>
-    <div class="re-submit-holder mb-5">
-      <a class="btn btn-primary" href="/" role="button">Enter New Data</a>
+    <table>
+      <div class="re-submit-holder mb-5">
+        <a class="btn btn-primary" href="/" role="button"><%= t("results_page.enter_new_data") %></a>
+      </div>
     </div>
   </div>
