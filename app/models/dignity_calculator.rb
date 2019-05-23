@@ -1,8 +1,9 @@
 class DignityCalculator
-  DIGNITY_SCORES = %w(domicile exaltation detriment fall pilgrim domicile_reception exaltation_reception
-                      dispositor decanate term direct retrograde fast slow stationary in_joy via_combusta
-                      in_house_1 in_house_2 in_house_3 in_house_4 in_house_5 in_house_6 in_house_7
-                      in_house_8 in_house_9 in_house_10 in_house_11 in_house_12 triplicity).freeze
+  ESSENTIAL_DIGNITIES = %w(domicile exaltation detriment fall pilgrim domicile_reception
+                           exaltation_reception decanate triplicity term via_combusta).freeze
+  ACCIDENTAL_DIGNITIES = %w(in_house_1 in_house_2 in_house_3 in_house_4 in_house_5 in_house_6
+                            in_house_7 in_house_8 in_house_9 in_house_10 in_house_11 in_house_12
+                            direct retrograde fast slow stationary in_joy dispositor).freeze
 
   def initialize(planets, score_config)
     @score_config = score_config
@@ -14,10 +15,22 @@ class DignityCalculator
   def calculate_for(planet)
     results = {}
     total_score = 0
-    DIGNITY_SCORES.each do |dignity|
+
+    results[:essential_dignities] = {}
+    ESSENTIAL_DIGNITIES.each do |dignity|
       score = get_dignity_score(planet, dignity)
       total_score += score
-      results[dignity.to_sym] = {
+      results[:essential_dignities][dignity.to_sym] = {
+        result: !score.zero?,
+        score: score
+      }
+    end
+
+    results[:accidental_dignities] = {}
+    ACCIDENTAL_DIGNITIES.each do |dignity|
+      score = get_dignity_score(planet, dignity)
+      total_score += score
+      results[:accidental_dignities][dignity.to_sym] = {
         result: !score.zero?,
         score: score
       }
