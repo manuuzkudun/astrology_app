@@ -20,8 +20,8 @@
   <div class="container mt-3 mb-5">
     <% @planets_dignities.each do |planet| %>
       <div class="planet-result">
-        <%= planet[:dignities][:accidental_dignities] %>
-        <!--<%= t("planets.#{planet[:planet_name]}") %>-->
+        <!--<%= planet[:dignities] %>-->
+        <h3><%= t("planets.#{planet[:planet_name]}") %></h3>
         <span class="planet-icon <%= planet[:planet_name] %> "></span>
         <div class="planet-result--summary row">
           <div class="col">
@@ -67,27 +67,27 @@
             <li><span>Pilgrim</span><span><%= planet[:dignities][:essential_dignities][:pilgrim][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:essential_dignities][:domicile_reception][:result]  %>
-            <li><span>Domicile Reception</span><span class="scored"><%= planet[:dignities][:essential_dignities][:domicile_reception][:score] %></span></li>
+            <li><span>Domicile Reception</span><span class="scored">+<%= planet[:dignities][:essential_dignities][:domicile_reception][:score] %></span></li>
           <% else %>
             <li><span>Domicile Reception</span><span><%= planet[:dignities][:essential_dignities][:domicile_reception][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:essential_dignities][:exaltation_reception][:result]  %>
-            <li><span>Exaltation Reception</span><span class="scored"><%= planet[:dignities][:essential_dignities][:exaltation_reception][:score] %></span></li>
+            <li><span>Exaltation Reception</span><span class="scored">+<%= planet[:dignities][:essential_dignities][:exaltation_reception][:score] %></span></li>
           <% else %>
             <li><span>Exaltation Reception</span><span><%= planet[:dignities][:essential_dignities][:exaltation_reception][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:essential_dignities][:decanate][:result]  %>
-            <li><span>In own decanate</span><span class="scored"><%= planet[:dignities][:essential_dignities][:decanate][:score] %></span></li>
+            <li><span>In own decanate</span><span class="scored">+<%= planet[:dignities][:essential_dignities][:decanate][:score] %></span></li>
           <% else %>
             <li><span>In own decanate</span><span><%= planet[:dignities][:essential_dignities][:decanate][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:essential_dignities][:term][:result]  %>
-            <li><span>In own term</span><span class="scored"><%= planet[:dignities][:essential_dignities][:term][:score] %></span></li>
+            <li><span>In own term</span><span class="scored">+<%= planet[:dignities][:essential_dignities][:term][:score] %></span></li>
           <% else %>
             <li><span>In own term</span><span><%= planet[:dignities][:essential_dignities][:term][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:essential_dignities][:triplicity][:result]  %>
-            <li><span>In triplicity</span><span class="scored"><%= planet[:dignities][:essential_dignities][:triplicity][:score] %></span></li>
+            <li><span>In triplicity</span><span class="scored">+<%= planet[:dignities][:essential_dignities][:triplicity][:score] %></span></li>
           <% else %>
             <li><span>In triplicity</span><span><%= planet[:dignities][:essential_dignities][:triplicity][:score] %></span></li>
           <% end %>
@@ -101,71 +101,68 @@
         <h6 class="planet-list accidental heading"><!--<span class="title">Accidental Dignities</span><span class="score">5</span><span class="toggler">+</span>-->Accidental Dignities</h6>
         <hr></hr>
         <ul class="dignities-list">
-          <li><span>In House</span><span>2</span></li>
-          <li><span>Direct</span><span>2</span></li>
-          <li><span>Retrograde</span><span>2</span></li>
-          <li><span>Fast</span><span>2</span></li>
-          <li><span>Slow</span><span>2</span></li>
-          <li><span>Stationary</span><span>2</span></li>
-          <li><span>In Joy</span><span>2</span></li>
-          <li><span>Is Dispositor</span><span>2</span></li>
+          <% (1..12).each do |house| %>
+            <% if planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:result] %>
+              <% if planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score] > 0 %>
+                 <li><span>In House <%= romanHouses["#{house}"] %></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score]%></span></li>
+                <% else %>
+                 <li><span>In House <%= romanHouses["#{house}"] %></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score]%></span></li>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:direct][:result]  %>
+            <li><span>Direct</span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+          <% else %>
+            <li><span>Direct</span><span><%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:retrograde][:result]  %>
+            <li><span>Retrograde</span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:retrograde][:score] %></span></li>
+          <% else %>
+            <li><span>Retrograde</span><span><%= planet[:dignities][:accidental_dignities][:retrograde][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:fast][:result]  %>
+            <li><span>Fast</span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:fast][:score] %></span></li>
+          <% else %>
+            <li><span>Fast</span><span><%= planet[:dignities][:accidental_dignities][:fast][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:slow][:result]  %>
+            <li><span>Slow</span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:slow][:score] %></span></li>
+          <% else %>
+            <li><span>Slow</span><span><%= planet[:dignities][:accidental_dignities][:slow][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:stationary][:result]  %>
+            <li><span>Stationary</span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
+          <% else %>
+            <li><span>Stationay</span><span><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:in_joy][:result]  %>
+            <li><span>In Joy</span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
+          <% else %>
+            <li><span>In Joy</span><span><%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
+          <% end %>
+          <% if planet[:dignities][:accidental_dignities][:dispositor][:result]  %>
+            <li><span>Is Dispositor</span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:dispositor][:score] %></span></li>
+          <% else %>
+            <li><span>Is Dispositor</span><span><%= planet[:dignities][:accidental_dignities][:dispositor][:score] %></span></li>
+          <% end %>
+        </ul>
+        <hr></hr>
+        <ul class="dignities-list total">
+          <% if planet[:dignities]["total_score"] > 0  %>
+            <li><span>Total Score</span><span class="scored"><%= planet[:dignities]["total_score"] %></span></li>
+          <% else %>
+            <% if planet[:dignities]["total_score"] == 0 %>
+            <li><span>Total Score</span><span class="score"><%= planet[:dignities]["total_score"] %></span></li>
+            <% else %>
+            <li><span>Total Score</span><span class="unscored"><%= planet[:dignities]["total_score"] %></span></li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     <% end %>
-    <!--<div class="planet-result">
-       <h3>sol</h3>
-      <span class="planet-icon"></span>
-      <div class="planet-result--summary row">
-        <div class="col">
-          <span class="sign-icon top"></span>
-          <span class="sign-icon bottom">aries</span>
-        </div>
-        <div class="col">
-          <span class="sign-degree top">16.04</span>
-          <span class="sign-degree bottom">grado</span>
-        </div>
-        <div class="col">
-          <span class="sign-house top">IV</span>
-          <span class="sign-house bottom">casa</span>
-        </div>
-      </div>
-      <hr></hr>-->
-      <!--<h6 class="planet-list essential heading"><span class="title">Essential Dignities</span><span class="score">5</span><span class="toggler">+</span>Essential Dignities</h6>-->
-      <!-- <hr></hr>
-      <ul class="dignities-list">
-        <li><span>Domicile</span><span>3</span></li>
-        <li><span>Domicile Reception</span><span>3</span></li>
-        <li><span>Exaltation</span><span>3</span></li>
-        <li><span>Exaltation reception</span><span>3</span></li>
-        <li><span>Exile</span><span>3</span></li>
-        <li><span>Fall</span><span>3</span></li>
-        <li><span>Pilgrim</span><span>3</span></li>
-      </ul>
-      <hr></hr> -->
-      <!--<h6 class="planet-list accidental heading"><span class="title">Essential Dignities</span><span class="score">5</span><span class="toggler">+</span>Accidental Dignities</h6>-->
-      <!-- <hr></hr>
-      <ul class="dignities-list">
-        <li><span>Decanate</span><span>3</span></li>
-        <li><span>Term</span><span>3</span></li>
-        <li><span>Triplicity</span><span>3</span></li>
-        <li><span>Joy</span><span>3</span></li>
-        <li><span>Via combusta</span><span>3</span></li>
-        <li><span>Fall</span><span>3</span></li>
-        <li><span>Planet Dispositor</span><span>3</span></li>
-        <li><span>Direct</span><span>3</span></li>
-        <li><span>Retrograde</span><span>3</span></li>
-        <li><span>Fast</span><span>3</span></li>
-        <li><span>Slow</span><span>3</span></li>
-        <li><span>Stationary</span><span>3</span></li>
-      </ul>
-      <hr></hr> -->
-      <!--<h6 class="planet-list totals heading"><span class="title">Essential Dignities</span><span class="score">5</span><span class="toggler">+</span>4</h6>-->
-      <!-- <hr></hr> -->
-    </div>
   </div>
   <div class="container mt-3 mb-5">
-      <div class="re-submit-holder mb-5">
-        <a class="btn btn-primary" href="/" role="button"><%= t("results_page.enter_new_data") %></a>
-      </div>
+    <div class="re-submit-holder mb-5">
+      <a class="btn btn-primary" href="/" role="button"><%= t("results_page.enter_new_data") %></a>
     </div>
   </div>
