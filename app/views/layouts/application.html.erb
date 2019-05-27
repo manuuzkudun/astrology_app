@@ -2,6 +2,14 @@
 <html>
   <%= render 'layouts/head' %>
   <body class="">
+    <ul>
+         <li>
+           <%= link_to 'English', change_locale_path(:en) %>
+         </li>
+         <li>
+           <%= link_to 'Español', change_locale_path(:es) %>
+         </li>
+       </ul>
     <ul class="nav nav-pills justify-content-end">
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
