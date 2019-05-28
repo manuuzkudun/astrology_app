@@ -94,6 +94,9 @@ div.container {
       text-align:left;
       max-width:50%;
       margin:0 auto;
+      min-height:1rem;
+      height:100%;
+      cursor:pointer;
 
       >span {
         display:inline-block;
@@ -107,15 +110,13 @@ div.container {
 
       }
 
-      span.score {
-        color:red;
-        width:12.5%;
-        text-align:right;
-      }
 
       span.toggler {
-        width:12.5%;
+        width:25%;
         text-align:right;
+        height:1rem;
+        background:transparent url('/assets/down-chevron.svg') no-repeat center right;
+
       }
     }
 
@@ -238,10 +239,12 @@ div.container {
 
     ul.dignities-list {
       padding:0;
-      margin:0 auto;
+      margin:1rem auto 0 auto;
       list-style:none;
       max-width:50%;
       color:#919aa1;
+
+      display:none;
 
       li {
 
@@ -275,12 +278,18 @@ div.container {
         }
 
       }
+
+      hr {
+        width:100% !important;
+      }
     }
 
     ul.dignities-list.total {
 
       margin:0 auto 3rem auto;
       padding:0 0 3rem 0;
+
+
 
       li {
 
@@ -294,10 +303,16 @@ div.container {
       }
     }
 
+    /* Exapanded list style toggled by JS
+    =================================================== */
+
+    ul.dignities-list.expanded {
+      display:block;
+    }
+
   }
 
   div.re-submit-holder {
-    // text-align:right;
     a {
       margin: 0;
     }

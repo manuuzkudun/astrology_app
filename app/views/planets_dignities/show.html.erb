@@ -38,9 +38,9 @@
           </div>
         </div>
         <hr></hr>
-        <h6 class="planet-list essential heading"><!--<span class="title">Essential Dignities</span><span class="score">5</span><span class="toggler">+</span>-->Essential Dignities</h6>
-        <hr></hr>
+        <h6 class="planet-list essential heading"><span class="title">Essential Dignities</span><span class="toggler"></span></h6>
         <ul class="dignities-list">
+          <hr></hr>
           <% if planet[:dignities][:essential_dignities][:domicile][:result]  %>
             <li><span>Domicile</span><span class="scored">+<%= planet[:dignities][:essential_dignities][:domicile][:score] %></span></li>
           <% else %>
@@ -98,9 +98,9 @@
           <% end %>
         </ul>
         <hr></hr>
-        <h6 class="planet-list accidental heading"><!--<span class="title">Accidental Dignities</span><span class="score">5</span><span class="toggler">+</span>-->Accidental Dignities</h6>
-        <hr></hr>
+        <h6 class="planet-list accidental heading"><span class="title">Accidental Dignities</span><span class="toggler"></span></h6>
         <ul class="dignities-list">
+          <hr></hr>
           <% (1..12).each do |house| %>
             <% if planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:result] %>
               <% if planet[:dignities][:accidental_dignities][:"in_house_#{house}"][:score] > 0 %>
@@ -147,7 +147,7 @@
           <% end %>
         </ul>
         <hr></hr>
-        <ul class="dignities-list total">
+        <ul class="dignities-list total expanded">
           <% if planet[:dignities]["total_score"] > 0  %>
             <li><span>Total Score</span><span class="scored"><%= planet[:dignities]["total_score"] %></span></li>
           <% else %>
