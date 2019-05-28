@@ -76,13 +76,17 @@ MAPQUEST FUNCTION
 
 const mapQuestCall = (_countryCode, _cityName) => {
 
-  console.log('city name lengh is ' + _cityName.length)
+  /*=================================================
+  @params
+  _countryCode -> String -> i.e: ES for Spain
+  _cityName -> String -> i.e: Madrid for Madrid
+  =================================================== */
 
   !_cityName.length  ? _cityName = 'a' : null;
 
   L.mapquest.key = mapQuestKey;
 
-  myMap ? myMap.remove() : null;
+  myMap ? myMap.remove() : null; //Remove map if present
 
   L.mapquest.geocoding().geocode({city:_cityName, country:_countryCode}, (error, response) => {
 
@@ -119,11 +123,6 @@ const mapQuestCall = (_countryCode, _cityName) => {
      setFormCoordinates(lat,lng);
 
 
-
-
-
-
-
   });
 
 
@@ -146,9 +145,6 @@ const setFormCoordinates = (_lat,_lng) => {
   //   console.log('reverse response is ');
   //   console.dir(response);
   // });
-
-
-
 
   document.querySelector('input.msg-mq').value = 'Located at ' + _lat.toFixed(2) + ' lat, ' + _lng.toFixed(2) + ' lng';
 
@@ -270,45 +266,50 @@ addInteractions = () => {
 
 
 
-    myMapQuestButton.addEventListener('click', (e) => {
+    myMapQuestButton.map( (_obj) => {
+
+      _obj.addEventListener('click', (e) => {
 
 
-    if(document.querySelector('select.country-mq').value == 'none'){
+      if(document.querySelector('select.country-mq').value == 'none'){
 
-      let myAlert = document.createElement('p');
+        let myAlert = document.createElement('p');
 
-      myAlert.className = 'alert alert-danger';
-      myAlert.innerHTML = 'Please, first select a Country to locate on Map';
+        myAlert.className = 'alert alert-danger';
+        myAlert.innerHTML = 'Please, first select a Country to locate on Map';
 
-      insertAfter(myAlert, document.querySelector('ul.nav')); //insert Alert on top of page
+        insertAfter(myAlert, document.querySelector('ul.nav')); //insert Alert on top of page
 
-      setTimeout( () => {
-        myAlert.classList.add('faded');
-      }, 2000);
+        setTimeout( () => {
+          myAlert.classList.add('faded');
+        }, 2000);
 
 
-    }else {   //Open Map
+      }else {   //Open Map
 
-      !document.body.classList.contains('has-map') ? document.body.classList.add('has-map') : null;
+        !document.body.classList.contains('has-map') ? document.body.classList.add('has-map') : null;
 
-      console.log(myMapQuestForm.querySelector('input.city-mq').value.length);
+        console.log(myMapQuestForm.querySelector('input.city-mq').value.length);
 
-      //Only make a blind call to API (no city) if there is no data in its input field and map is not already locked somewhere
+        //Only make a blind call to API (no city) if there is no data in its input field and map is not already locked somewhere
 
-      if(myMapQuestForm.querySelector('input.city-mq').value.length < 1 && !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg')) {
+        if(myMapQuestForm.querySelector('input.city-mq').value.length < 1 && !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg')) {
 
-        setTimeout(function () {
-          mapQuestCall(myMapQuestForm.querySelector('select').value, myMapQuestForm.querySelector('input.city-mq').value);
-        }, 1000); //Send the call with a one second delay so mapcan me reset properly when calling from on blur event as well
+          setTimeout(function () {
+            mapQuestCall(myMapQuestForm.querySelector('select').value, myMapQuestForm.querySelector('input.city-mq').value);
+          }, 1000); //Send the call with a one second delay so mapcan me reset properly when calling from on blur event as well
+
+
+        }
+
 
 
       }
 
-
-
-    }
-
+      });
     });
+
+
 
 
     myMapQuestCloser.addEventListener('click', (e) => {
@@ -350,7 +351,7 @@ init = e => {
   document.removeEventListener('turbolinks:load', init, false);
   //Store/Assign DOM Elements
   myMapQuestForm = document.querySelector('div.formgroup.secondary');
-  myMapQuestButton = document.getElementById('btn-mq');
+  myMapQuestButton = Array.from(document.querySelectorAll('button.mq-btn'));
   myMapQuestCloser = document.getElementById('closer-mq');
   mySubmitBtn = document.getElementById('btn-submit');
   mySelects = Array.from(document.querySelectorAll('div.formgroup.secondary select'));

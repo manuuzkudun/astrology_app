@@ -14,8 +14,6 @@ STYLES FOR PLANET DIGNITIES (SHOW.ERB)
 ================================================== */
 
 div.container {
-  // max-width:none;
-  // width:95%;
   text-align:center;
 
   h1 {
@@ -46,8 +44,7 @@ div.container {
     font-size:0.625rem;
     font-weight:700;
     font-family:$montseFont;
-    // width:50%;
-    // margin:1rem auto;
+
   }
   hr {
     width:50%;
@@ -71,23 +68,12 @@ div.container {
 
   div.planet-result {
     margin:3rem auto 0 auto;
-    // border:$lightGray 0.125rem solid;
-    // width:auto;
-    // background:#f5f5f5 none;
-    // border-radius:0.250rem;
-
 
     h3 {
       margin:0;
       font-size:1rem;
       font-family: $montseFont;
-      // background:#222 none;
-      // border-radius:0.250rem;
-      // color:#fff;
-      // width:auto;
-      // display:inline-block;
-      // margin:0 auto;
-      // padding:0.250rem;
+
     }
 
     h6 {
@@ -321,8 +307,17 @@ div.container {
 }
 
 
+@media screen and (max-width: 35.999rem) {
 
-@media screen and (max-width: 575.98px) {
+  div.mq-ui {
+      button.mq-btn.desktop {
+        display:none;
+      }
+  }
+  button.mq-btn.mobile {
+    display:block;
+  }
+
 
   div.formgroup {
     width:95%;
@@ -351,10 +346,21 @@ div.container {
   }
 
   div.re-submit-holder {
-    // text-align:right;
+
     a {
       width:100%;
     }
   }
+
+  footer {
+    background:#fff none;
+
+    p {
+      text-align:center;
+    }
+  }
+
+
+
 
 }
