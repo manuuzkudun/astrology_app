@@ -34,30 +34,35 @@ en:
     aquarius: 'Aquarius'
     pisces: 'Pisces'
   planet_dignities:
+    essential: 'essential dignities'
+    accidental: 'accidental dignities'
     planet: 'Planet'
     sign: 'Sign'
     degree: 'Degree'
     house: 'House'
+    in_house: 'In House'
     domicile: 'Domicile'
     exaltation: 'Exaltation'
     detriment: 'Detriment'
     fall: 'Fall'
     pilgrim: 'Pilgrim'
-    triplicity: 'Triplicity'
-    term: 'Term'
-    decanate: 'Decanate'
-    joy: 'Joy'
+    triplicity: 'In Own Triplicity'
+    term: 'In Own Term'
+    decanate: 'In Own Decanate'
+    joy: 'In Joy'
     fast: 'Fast'
     slow: 'Slow'
     stationary: 'Stationary'
     direct: 'Direct'
     retrograde: 'Retrograde'
-    via_combusta: 'Via combusta'
+    via_combusta: 'In Via combusta'
     domicile_reception: 'Domicile reception'
     exaltation_reception: 'Exaltation reception'
-    diposited_planets: 'Disposited planets'
-    score: 'Score'
+    disposited_planets: 'Disposited planets'
+    score: 'Total Score'
   home_page:
+    title: 'Planetary Quantification'
+    sub_title: 'online tool'
     set_location: 'Please set a location'
     set_date: 'Please set a date'
     set_time: 'Please set a time'
@@ -72,6 +77,9 @@ en:
   results_page:
     results: 'Results'
     enter_new_data: 'Enter new data'
+  footer:
+    content_first: 'Made with'
+    content_second: 'by Manu and Rob in Barcelona'
   global:
     navigation:
       preferences: "User preferences"
@@ -79,4 +87,3 @@ en:
       logout: "logout"
       sign_up: "Sign up"
       login: "Login"
-  planet_dignities:
