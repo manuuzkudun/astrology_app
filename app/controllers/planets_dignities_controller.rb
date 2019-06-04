@@ -13,6 +13,12 @@ class PlanetsDignitiesController < ApplicationController
       planet = Planets::PlanetFactory.create(ephem_data)
     end
 
+    @cusps = ephemerides.house_cusps
+    @planet_positions = { }
+    planetsData.each do |planet|
+      @planet_positions[planet.name.capitalize] = [planet.longitude]
+    end
+
     dignity_calculator = DignityCalculator.new(planetsData, score_config)
 
     @planets_dignities = planetsData.map do |planet|
