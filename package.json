@@ -1,5 +1,7 @@
 {
   "name": "astrology_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "astrochart": "https://github.com/Kibo/AstroChart.git"
+  }
 }
