@@ -1,4 +1,5 @@
 class EphemeridesService
+
   ZODIAC_SIGNS = %w(aries taurus gemini cancer leo virgo libra scorpio
                     sagittarius capricorn aquarius pisces).freeze
 
@@ -10,6 +11,7 @@ class EphemeridesService
     @month = client_data.month
     @day = client_data.day
     @hour = client_data.hour
+    @houses = get_houses
   end
 
   def get_data(planet)
@@ -17,6 +19,12 @@ class EphemeridesService
     planet_code = code_for(planet)
     data = Swe4r::swe_calc_ut(julian_day, planet_code, options)
     represent(planet, data)
+  end
+
+  def house_cusps
+    cusps = @houses
+    cusps.pop
+    cusps
   end
 
   private
@@ -44,9 +52,9 @@ class EphemeridesService
   end
 
   def in_house(planet_longitude)
-    for i in 0..houses.length - 2
-      cusp = houses[i]
-      next_cusp = houses[i+1]
+    for i in 0..@houses.length - 2
+      cusp = @houses[i]
+      next_cusp = @houses[i+1]
       if cusp < next_cusp
         if in_sector?(planet_longitude, cusp, next_cusp)
           return i + 1
@@ -80,8 +88,8 @@ class EphemeridesService
     end
   end
 
-  def houses
-    @houses ||= Swe4r::swe_houses(julian_day, @latitude, @longitude, 'P')[1..13]
+  def get_houses
+    Swe4r::swe_houses(julian_day, @latitude, @longitude, 'P')[1..13]
   end
 
   def set_location

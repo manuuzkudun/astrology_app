@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require astrochart/project/build/astrochart
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
@@ -416,7 +416,15 @@ addInteractions = () => {
 },
 init = e => {
 
+var planetPositions = document.querySelector('.planet_positions').getAttribute('data-positions')
+var cusps = document.querySelector('.planet_positions').getAttribute('data-cusps')
+var data = {
+	"planets": JSON.parse(planetPositions),
+	"cusps": JSON.parse(cusps)
+};
 
+  var chart = new astrology.Chart( 'chart', 800, 800);
+  		chart.radix( data );
 
   document.removeEventListener('turbolinks:load', init, false);
   //Store/Assign DOM Elements
