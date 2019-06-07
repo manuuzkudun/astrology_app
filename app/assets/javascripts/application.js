@@ -204,7 +204,6 @@ addInteractions = () => {
   if(document.querySelector('p.alert ')) {
 
       Array.from(document.querySelectorAll('p.alert')).forEach((el,i) => {
-        //setTimeout(() => {el.parentNode.removeChild(el)}, (i + 1) * 2000 );
         setTimeout(() => {el.classList.add('faded')}, (i + 1) * 2000 );
       });
   }
