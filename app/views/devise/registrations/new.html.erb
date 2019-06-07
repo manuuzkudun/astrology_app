@@ -1,42 +1,42 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 <div class="container">
   <hr></hr>
-  <h6>Sign Up</h6>
+  <h6><%= t("global.navigation.sign_up")%></h6>
   <hr></hr>
 </div>
   <div class="container formgroup single mt-4">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Email</span>
+          <span class="input-group-text"><%= t("global.navigation.email") %></span>
         </div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t("global.navigation.email").capitalize %>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Password</span>
+          <span class="input-group-text"><%= t("global.navigation.password") %></span>
         </div>
         <% if @minimum_password_length %>
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "#{@minimum_password_length} characters minimum" %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "#{@minimum_password_length} " + t("global.navigation.min_chars_msg_placeholder") %>
         <% else %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: t("global.navigation.password") %>
         <% end %>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Password<sup>2</sup></span>
+          <span class="input-group-text"><%= t("global.navigation.password") %><sup>2</sup></span>
         </div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Please, confirm your password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: t("global.navigation.confirm_pass_placeholder") %>
       </div>
       <div class="secondary-nav-controls">
         <div class="secondary-nav-controls--btn">
-          <%= f.submit "Sign Up", class: "actions btn btn-primary" %>
+          <%= f.submit t("global.navigation.sign_up"), class: "actions btn btn-primary" %>
         </div>
       </div>
   </div>
   <div class="container mt-4">
     <hr></hr>
-    <h6>or</h6>
+    <h6><%= t("global.navigation.also") %></h6>
     <hr></hr>
   </div>
   <div class="container site-mapping mt-2">

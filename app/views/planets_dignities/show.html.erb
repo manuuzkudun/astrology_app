@@ -135,9 +135,9 @@
             <li><span><%= t("planet_dignities.stationary")%></span><span><%= planet[:dignities][:accidental_dignities][:stationary][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:accidental_dignities][:in_joy][:result]  %>
-            <li><span><%= t("planet_dignities.joy")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
+            <li><span><%= t("planet_dignities.in_joy")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
           <% else %>
-            <li><span><%= t("planet_dignities.joy")%></span><span><%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
+            <li><span><%= t("planet_dignities.in_joy")%></span><span><%= planet[:dignities][:accidental_dignities][:in_joy][:score] %></span></li>
           <% end %>
           <% if planet[:dignities][:accidental_dignities][:dispositor][:result]  %>
             <li><span><%= t("planet_dignities.disposited_planets")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:dispositor][:score] %></span></li>

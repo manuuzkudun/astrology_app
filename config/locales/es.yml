@@ -34,6 +34,7 @@ es:
     aquarius: 'Acuario'
     pisces: 'Piscis'
   planet_dignities:
+    planet_dignities: "dignidades planetarias"
     essential: 'dignidades esenciales'
     accidental: 'dignidades accidentales'
     planet: 'Planeta'
@@ -49,10 +50,11 @@ es:
     triplicity: 'En su Triplicidad'
     term: 'En su Término'
     decanate: 'En su Decanato'
-    joy: 'En su Gozo'
+    in_joy: 'En su Gozo'
     fast: 'Rápido'
     slow: 'Lento'
     stationary: 'Estacionario'
+    dispositor: "Dispositor"
     direct: 'Directo'
     retrograde: 'Retrogrado'
     via_combusta: 'En Via combusta'
@@ -60,6 +62,18 @@ es:
     exaltation_reception: 'Recepción por exaltación'
     disposited_planets: 'Planetas dispuestos'
     score: 'Puntuación Total'
+    in_house_1: "En Casa 1"
+    in_house_2: "En Casa 2"
+    in_house_3: "En Casa 3"
+    in_house_4: "En Casa 4"
+    in_house_5: "En Casa 5"
+    in_house_6: "En Casa 6"
+    in_house_7: "En Casa 7"
+    in_house_8: "En Casa 8"
+    in_house_9: "En Casa 9"
+    in_house_10: "En Casa 10"
+    in_house_11: "En Casa 11"
+    in_house_12: "En Casa 12"
   home_page:
     title: 'Cuantificación Planetaria'
     sub_title: 'Herramienta online'
@@ -86,4 +100,23 @@ es:
       edit_profile: "Editar perfil"
       logout: "Cerrar sesión"
       sign_up: "Regístrate"
+      sign_in_with: "Ingresar con"
       login: "Iniciar sesión"
+      email: "correo"
+      password: "contraseña"
+      current_password: "contraseña actual"
+      pass_recovery: "¿Olvidó su contraseña?"
+      confirmation_question: "¿No recivió las instrucciones de confirmación?"
+      unlock_question: "¿No recibión instrucciones de desbloqueo?"
+      also: "o también"
+      disagree: "o si no está satisfecho..."
+      cancel_account: "cancelar mi cuenta"
+      back: "volver"
+      update: "actualizar"
+      edit: "editar"
+      security_msg: "Por razones de seguridad perdimos su actual contraseña para realizar cambios en su perfil."
+      blank_msg_placeholder: "En blanco si se mantiene"
+      min_chars_msg_placeholder: "carac. min."
+      confirm_pass_placeholder: "Confirmar contraseña"
+      confirm_pass_change_placeholder: "Confirmar contraseña si se cambia"
+      current_pass_msg_placeholder: "Introducir contraseña actual"

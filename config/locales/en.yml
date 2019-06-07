@@ -34,6 +34,7 @@ en:
     aquarius: 'Aquarius'
     pisces: 'Pisces'
   planet_dignities:
+    planet_dignities: "planet dignities"
     essential: 'essential dignities'
     accidental: 'accidental dignities'
     planet: 'Planet'
@@ -49,10 +50,11 @@ en:
     triplicity: 'In Own Triplicity'
     term: 'In Own Term'
     decanate: 'In Own Decanate'
-    joy: 'In Joy'
+    in_joy: 'In Joy'
     fast: 'Fast'
     slow: 'Slow'
     stationary: 'Stationary'
+    dispositor: "Dispositor"
     direct: 'Direct'
     retrograde: 'Retrograde'
     via_combusta: 'In Via combusta'
@@ -60,6 +62,18 @@ en:
     exaltation_reception: 'Exaltation reception'
     disposited_planets: 'Disposited planets'
     score: 'Total Score'
+    in_house_1: "In House 1"
+    in_house_2: "In House 2"
+    in_house_3: "In House 3"
+    in_house_4: "In House 4"
+    in_house_5: "In House 5"
+    in_house_6: "In House 6"
+    in_house_7: "In House 7"
+    in_house_8: "In House 8"
+    in_house_9: "In House 9"
+    in_house_10: "In House 10"
+    in_house_11: "In House 11"
+    in_house_12: "In House 12"
   home_page:
     title: 'Planetary Quantification'
     sub_title: 'online tool'
@@ -86,4 +100,23 @@ en:
       edit_profile: "Edit profile"
       logout: "logout"
       sign_up: "Sign up"
+      sign_in_with: "Sign In with"
       login: "Login"
+      email: "email"
+      password: "password"
+      current_password: "current password"
+      pass_recovery: "Forgot Your Password?"
+      confirmation_question: "Didn't receive confirmation instructions?"
+      unlock_question: "Didn't receive unlock instructions?"
+      also: "or"
+      disagree: "or if you are unhappy..."
+      cancel_account: "cancel my account"
+      back: "go back"
+      update: "update"
+      edit: "edit"
+      security_msg: "For security reasons we ask for your current password in order to confirm changes on your profile."
+      blank_msg_placeholder: "Leave blank if keeping it"
+      min_chars_msg_placeholder: "chars minimum"
+      confirm_pass_placeholder: "Please, confirm password"
+      confirm_pass_change_placeholder: "Please, confirm password if changing"
+      current_pass_msg_placeholder: "Please, enter current password"
