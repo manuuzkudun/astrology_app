@@ -2,14 +2,15 @@
 <html>
   <%= render 'layouts/head' %>
   <body class="">
-    <ul>
-         <li>
-           <%= link_to 'English', change_locale_path(:en) %>
-         </li>
-         <li>
-           <%= link_to 'Español', change_locale_path(:es) %>
-         </li>
-       </ul>
+    <ul class="language-selector position-fixed">
+      <li>
+        <%= link_to 'En', change_locale_path(:en), :title => 'English' %>
+      </li>
+      <li>/</li>
+      <li>
+        <%= link_to 'Es', change_locale_path(:es), :title => 'Español' %>
+      </li>
+    </ul>
     <ul class="nav nav-pills justify-content-end">
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
@@ -38,8 +39,8 @@
     <% end %>
     <div id="main" class="main">
       <div class="container mt-3">
-        <h1><a href="/">Planetary Quantification</a></h1>
-        <h4>Online Tool</h4>
+        <h1 class="site-heading"><a href="/"><%= t("home_page.title") %></a></h1>
+        <h4 class="site-subheading"><%= t("home_page.sub_title") %></h4>
       </div>
     <%= yield %>
     <%= render 'layouts/footer' %>

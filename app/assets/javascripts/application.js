@@ -28,6 +28,7 @@ let mapQuestKey = 'fGs90Xaz6Ar09AEHLz7wgjjwTWV7vFJz', //MapQuest API Key
     mySelects, //Var to hold a reference for the different select form fields
     myFormGroup, //Var to hold a reference for the form group so we can populate its fileds according to changes on other DOM NODES
     myInputs, //Var to hold a reference for all the inputs containing user data
+    myListTogglers, //Var to hold a reference for the <h6> DOM nodes toggling the list of dignities in show.html.erb
     mySubmitBtn; //Var to hold a reference for the Submit Button
 
 const myMarkerIconOptions = {
@@ -75,56 +76,18 @@ MAPQUEST FUNCTION
 
 const mapQuestCall = (_countryCode, _cityName) => {
 
-  console.log('city name lengh is ' + _cityName.length)
+  /*=================================================
+  @params
+  _countryCode -> String -> i.e: ES for Spain
+  _cityName -> String -> i.e: Madrid for Madrid
+  =================================================== */
 
   !_cityName.length  ? _cityName = 'a' : null;
 
   L.mapquest.key = mapQuestKey;
 
-  myMap ? myMap.remove() : null;
+  myMap ? myMap.remove() : null; //Remove map if present
 
-  console.log(_countryCode, _cityName);
-
-  //!document.getElementById('map_mq').classList.contains('show') ? document.getElementById('map_mq').classList.add('show') : null;
-
-  //https://www.mapquestapi.com/geocoding/v1/address?key=KEY&inFormat=kvp&outFormat=json&location=La+roca+del+valles%2C+es&thumbMaps=false
-
-  /* BUILD UP THE QUERY
-  =================================================== */
-
-  // let myQuery = 'https://www.mapquestapi.com/geocoding/v1/address?key='+ mapQuestKey +'&inFormat=kvp&outFormat=json&location='+ _cityName +','+ _countryCode +'thumbMaps=false&maxResults=5';
-  //
-  // fetchC.apiCall(myQuery)
-  // .then(res => {
-  //
-  //   myMap ? myMap.remove() : null;
-  //
-  //   //console.log(res.results[0].locations[0].latLng);
-  //
-  //   let lat = res.results[0].locations[0].latLng.lat,
-  //       lng = res.results[0].locations[0].latLng.lng;
-  //
-  //   myMap = L.mapquest.map('map_mq', {
-  //     center: [lat, lng],
-  //     layers: L.mapquest.tileLayer('dark'),
-  //     zoom: 12
-  //   });
-  //
-  //   //myMap.addControl(L.mapquest.control());
-  //
-  //   L.marker([lat,lng], {
-  //     icon: L.mapquest.icons.marker({
-  //       primaryColor: '#22407F',
-  //       secondaryColor: '#3B5998',
-  //       shadow: false,
-  //       size: 'md'
-  //     })
-  //   }).addTo(myMap);
-  //
-  // })
-  // .catch(err => console.log('something went wrong ', err));
-
-  //L.mapquest.geocoding().geocode(_cityName +', '+ _countryCode, (error, response) => {
   L.mapquest.geocoding().geocode({city:_cityName, country:_countryCode}, (error, response) => {
 
     console.log(response);
@@ -156,14 +119,8 @@ const mapQuestCall = (_countryCode, _cityName) => {
        icon: L.mapquest.icons.marker(myMarkerIconOptions)
      }).addTo(myMap);
 
-     //L.mapquest.geocodingControl().addTo(myMap);
 
      setFormCoordinates(lat,lng);
-
-
-
-
-
 
 
   });
@@ -188,9 +145,6 @@ const setFormCoordinates = (_lat,_lng) => {
   //   console.log('reverse response is ');
   //   console.dir(response);
   // });
-
-
-
 
   document.querySelector('input.msg-mq').value = 'Located at ' + _lat.toFixed(2) + ' lat, ' + _lng.toFixed(2) + ' lng';
 
@@ -240,26 +194,6 @@ toggleCityInput = () => {
 },
 onInputLeave = e => {
 
-  //Basic Validation
-  //
-  // let totalFilledInputs = 0;
-  //
-  // myInputs.forEach(function(el,i){
-  //   el.value.length > 0 ? totalFilledInputs++ : null;
-  // });
-  //
-  // //Re-enable submit button if all inputs are filled
-  //
-  // if (totalFilledInputs == myInputs.length ) {
-  //   mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.remove('disabled') : null;
-  // }else {
-  //   !mySubmitBtn.classList.contains('disabled') ? mySubmitBtn.classList.add('disabled') : null;
-  // }
-
-  //Here we perform MaqQuest Search for location
-
-  console.log(e.target.value);
-
   mapQuestCall(myMapQuestForm.querySelector('select').value, myMapQuestForm.querySelector('input.city-mq').value);
 
 },
@@ -270,7 +204,6 @@ addInteractions = () => {
   if(document.querySelector('p.alert ')) {
 
       Array.from(document.querySelectorAll('p.alert')).forEach((el,i) => {
-        //setTimeout(() => {el.parentNode.removeChild(el)}, (i + 1) * 2000 );
         setTimeout(() => {el.classList.add('faded')}, (i + 1) * 2000 );
       });
   }
@@ -295,11 +228,6 @@ addInteractions = () => {
 
         switch (mySubmitFormTarget) {
           case 'country-mq':
-            console.log('changed the country select');
-
-
-
-            //Activate the input text field on Country select changed
             toggleCityInput();
           break;
           case 'day':
@@ -337,61 +265,50 @@ addInteractions = () => {
 
 
 
-    myMapQuestButton.addEventListener('click', (e) => {
+    myMapQuestButton.map( (_obj) => {
+
+      _obj.addEventListener('click', (e) => {
 
 
-    // if( myMapQuestForm.querySelector('select').value != "0" && myMapQuestForm.querySelector('input').value.length > 0 ) {
-    //
-    //   console.log('Country code is ' + myMapQuestForm.querySelector('select').value + ' and city name is ' + myMapQuestForm.querySelector('input').value );
-    //
-    //   mapQuestCall(myMapQuestForm.querySelector('select').value, myMapQuestForm.querySelector('input').value);
-    //
-    // }else {
-    //   console.log('more data needed');
-    // }
+      if(document.querySelector('select.country-mq').value == 'none'){
 
-    //console.info(document.querySelector('select.country-mq').value);
+        let myAlert = document.createElement('p');
 
-    if(document.querySelector('select.country-mq').value == 'none'){
+        myAlert.className = 'alert alert-danger';
+        myAlert.innerHTML = 'Please, first select a Country to locate on Map';
 
-      let myAlert = document.createElement('p');
+        insertAfter(myAlert, document.querySelector('ul.nav')); //insert Alert on top of page
 
-      myAlert.className = 'alert alert-danger';
-      myAlert.innerHTML = 'Please, first select a Country to locate on Map';
-
-      insertAfter(myAlert, document.querySelector('ul.nav')); //insert Alert on top of page
-
-      setTimeout( () => {
-        myAlert.classList.add('faded');
-      }, 2000);
+        setTimeout( () => {
+          myAlert.classList.add('faded');
+        }, 2000);
 
 
-    }else {
+      }else {   //Open Map
 
-      //Open Map
+        !document.body.classList.contains('has-map') ? document.body.classList.add('has-map') : null;
 
-      !document.body.classList.contains('has-map') ? document.body.classList.add('has-map') : null;
+        console.log(myMapQuestForm.querySelector('input.city-mq').value.length);
+
+        //Only make a blind call to API (no city) if there is no data in its input field and map is not already locked somewhere
+
+        if(myMapQuestForm.querySelector('input.city-mq').value.length < 1 && !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg')) {
+
+          setTimeout(function () {
+            mapQuestCall(myMapQuestForm.querySelector('select').value, myMapQuestForm.querySelector('input.city-mq').value);
+          }, 1000); //Send the call with a one second delay so mapcan me reset properly when calling from on blur event as well
 
 
+        }
 
-      console.log(myMapQuestForm.querySelector('input.city-mq').value.length);
-
-      //Only make a blind call to API (no city) if there is no data in its input field and map is not already locked somewhere
-
-      if(myMapQuestForm.querySelector('input.city-mq').value.length < 1 && !document.querySelector('div.mq-ui--miniform').classList.contains('show-msg')) {
-
-        setTimeout(function () {
-          mapQuestCall(myMapQuestForm.querySelector('select').value, myMapQuestForm.querySelector('input.city-mq').value);
-        }, 1000); //Send the call with a one second delay so mapcan me reset properly when calling from on blur event as well
 
 
       }
 
-
-
-    }
-
+      });
     });
+
+
 
 
     myMapQuestCloser.addEventListener('click', (e) => {
@@ -411,6 +328,18 @@ addInteractions = () => {
       _obj.addEventListener('blur', onInputLeave, false);
     });
 
+  }else {
+
+    /* Interactions for show.html.erb
+    =================================================== */
+
+    myListTogglers = Array.from(document.querySelectorAll('h6.heading:not(.total)')).map( (_obj) => {
+
+      _obj.addEventListener('click', (e) => {
+        !_obj.nextElementSibling.classList.contains('expanded') ? _obj.nextElementSibling.classList.add('expanded') : _obj.nextElementSibling.classList.remove('expanded');
+      });
+
+    });
   }
 
 },
@@ -421,7 +350,7 @@ init = e => {
   document.removeEventListener('turbolinks:load', init, false);
   //Store/Assign DOM Elements
   myMapQuestForm = document.querySelector('div.formgroup.secondary');
-  myMapQuestButton = document.getElementById('btn-mq');
+  myMapQuestButton = Array.from(document.querySelectorAll('button.mq-btn'));
   myMapQuestCloser = document.getElementById('closer-mq');
   mySubmitBtn = document.getElementById('btn-submit');
   mySelects = Array.from(document.querySelectorAll('div.formgroup.secondary select'));

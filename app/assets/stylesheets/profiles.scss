@@ -11,10 +11,13 @@ div.formgroup.single {
   max-width:31.250rem;
   width:100%;
 
+  margin:0 auto 3rem auto;
+
   span.input-group-text {
     // font-family:$montseFont;
     // font-size:0.813rem;
     font-weight:700;
+    text-transform:capitalize;
   }
 
   .form-control {
@@ -88,6 +91,7 @@ STYLES FOR PLANET DIGNITIES EDITABLE VALUES (PROFILES/EDIT.ERB)
 
     span {
       width:100%;
+      font-size:0.813rem;
     }
     input {
       text-align:right;
