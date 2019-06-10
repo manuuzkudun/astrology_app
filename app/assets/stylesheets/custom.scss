@@ -329,3 +329,12 @@ body.has-map  {
     transform:translateY(0);
   }
 }
+
+@media screen and (max-width: 35.999rem) {
+  .nav-pills .nav-link, ul.language-selector {
+    font-size:0.625rem;
+  }
+  p.alert {
+    width:80%;
+  }
+}

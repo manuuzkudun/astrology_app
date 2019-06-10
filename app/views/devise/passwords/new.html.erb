@@ -10,11 +10,11 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><%= :email.capitalize %></span>
         </div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Please, type your email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: t("global.navigation.email") %>
       </div>
       <div class="secondary-nav-controls">
         <div class="secondary-nav-controls--btn">
-          <%= f.submit "Send me instructions", class: "actions btn btn-primary" %>
+          <%= f.submit t("global.navigation.send_instructions_btn"), class: "actions btn btn-primary" %>
         </div>
       </div>
     <% end %>

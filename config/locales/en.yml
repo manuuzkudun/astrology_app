@@ -98,7 +98,7 @@ en:
     navigation:
       preferences: "User preferences"
       edit_profile: "Edit profile"
-      logout: "logout"
+      logout: "Logout"
       sign_up: "Sign up"
       sign_in_with: "Sign In with"
       login: "Login"
@@ -114,6 +114,7 @@ en:
       back: "go back"
       update: "update"
       edit: "edit"
+      send_instructions_btn: "send me instruccions"
       security_msg: "For security reasons we ask for your current password in order to confirm changes on your profile."
       blank_msg_placeholder: "Leave blank if keeping it"
       min_chars_msg_placeholder: "chars minimum"
