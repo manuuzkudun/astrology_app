@@ -109,10 +109,12 @@
               <% end %>
             <% end %>
           <% end %>
-          <% if planet[:dignities][:accidental_dignities][:direct][:result]  %>
-            <li><span><%= t("planet_dignities.direct")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
-          <% else %>
-            <li><span><%= t("planet_dignities.direct")%></span><span><%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+          <% if planet[:planet_name] != 'sun' && planet[:planet_name] != 'moon' %>
+            <% if planet[:dignities][:accidental_dignities][:direct][:result] %>
+              <li><span><%= t("planet_dignities.direct")%></span><span class="scored">+<%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+            <% else %>
+              <li><span><%= t("planet_dignities.direct")%></span><span><%= planet[:dignities][:accidental_dignities][:direct][:score] %></span></li>
+            <% end %>
           <% end %>
           <% if planet[:dignities][:accidental_dignities][:retrograde][:result]  %>
             <li><span><%= t("planet_dignities.retrograde")%></span><span class="unscored"><%= planet[:dignities][:accidental_dignities][:retrograde][:score] %></span></li>
