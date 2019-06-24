@@ -69,18 +69,22 @@ module Planets
     end
 
     def direct?
+      return false if luminare?
       @speed > 0
     end
 
     def retrograde?
+      return false if luminare?
       @speed < 0
     end
 
     def fast?
+      return false if luminare?
       (@speed/@avrg_speed).abs > 1.1
     end
 
     def slow?
+      return false if luminare?
       (@speed/@avrg_speed).abs < 0.9
     end
 
@@ -140,6 +144,12 @@ module Planets
         max_degree = term_data[1]
         degree < max_degree
       end.first.first
+    end
+
+    private
+
+    def luminare?
+      @name == 'sun' || @name == 'moon'
     end
   end
 end
